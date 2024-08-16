@@ -20,13 +20,7 @@ app.listen(PORT, () => {
 });
 
 app.get('/', (req, res) => {
-  res.send(
-    `<html>
-        <body>
-            <h1>Ответ на сигнал из далёкого космоса</h1>
-        </body>
-        </html>`,
-  );
+  res.send("success");
 });
 
 app.use(errorLogger);
