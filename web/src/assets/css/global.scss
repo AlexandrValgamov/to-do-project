@@ -1,0 +1,56 @@
+html {
+  margin: 0;
+  height: 100%;
+  font-size: 16px;
+}
+
+body {
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0;
+}
+#root {
+  height: 100%;
+}
+
+.custom-scroll {
+  overflow: auto;
+  scrollbar-color: var(--theme-black-50) transparent;
+  scrollbar-width: thin;
+  padding-right: 8px;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+/* button */
+.custom-scroll::-webkit-scrollbar-button {
+  display: none;
+}
+/* Handle */
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: var(--theme-black-50);
+}
+/* Handle on hover */
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-black-50);
+}
+/* Track */
+.custom-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+/* Corner */
+.custom-scroll::-webkit-scrollbar-corner {
+  display: none;
+}
+/* Resizer */
+.custom-scroll::-webkit-resizer {
+  display: none;
+}
+
+#scroll-container {
+  .p-scrollpanel-bar-x {
+    display: none;
+  }
+}

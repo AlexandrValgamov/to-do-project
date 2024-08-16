@@ -1,5 +1,11 @@
+import "./theme/theme.scss";
+import "./assets/css/global.scss";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./index.css";
+import { Component } from "./components/Component";
 
-createRoot(document.getElementById("root")!).render(<StrictMode></StrictMode>);
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+    <Component />
+  </StrictMode>
+);
