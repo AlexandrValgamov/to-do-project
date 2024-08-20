@@ -32,6 +32,6 @@
   },
   "include": [
     "src"
-  ],
+, "../api/src/models", "../api/src/controllers"  ],
   "references": [{ "path": "./tsconfig.node.json"}]
 }
