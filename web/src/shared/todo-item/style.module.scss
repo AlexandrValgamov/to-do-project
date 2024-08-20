@@ -1,0 +1,40 @@
+.todoItemContainer {
+  display: flex;
+  min-height: 2rem;
+  flex-direction: column;
+  width: 100%;
+  color: var(--theme-black-100);
+}
+
+.todoItemTopContent{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid green;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  padding: 0.3rem 0.5rem;
+  background-color: var(--theme-green-60);
+}
+
+.todoItemBottomContent{
+  border: 1px solid green;
+  border-top: none;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  padding: 0.3rem;
+}
+
+.todoItemTitle {
+  font-weight: 500;
+  margin: 0;
+}
+
+.todoListDate {
+  opacity: .7;
+}
+
+.todoItemText {
+  font-weight: 500;
+  margin: 0;
+}
