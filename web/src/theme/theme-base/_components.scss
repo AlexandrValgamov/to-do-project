@@ -1,0 +1,39 @@
+@import '_mixins';
+@import '_colors';
+
+@import './components/input/_editor';
+
+@layer primereact {
+    @import '_common';
+    
+    //Input
+    @import './components/input/_autocomplete';
+    @import './components/input/_calendar';
+    @import './components/input/_cascadeselect';
+    @import './components/input/_checkbox';
+    @import './components/input/_chips';
+    @import './components/input/_colorpicker';
+    @import './components/input/_dropdown';
+    @import './components/input/_inputgroup';
+    @import './components/input/_inputnumber';
+    @import './components/input/_inputswitch';
+    @import './components/input/_inputtext';
+
+    //Button
+    @import './components/button/_button';
+    @import './components/button/_splitbutton';
+    @import './components/button/_speeddial';
+
+    //Misc
+    @import './components/misc/_avatar';
+    @import './components/misc/_chip';
+    @import './components/misc/_scrolltop';
+    @import './components/misc/_skeleton';
+    @import './components/misc/_tag';
+    @import './components/misc/_inplace';
+    @import './components/misc/metergroup';
+    @import './components/misc/_progressbar';
+    @import './components/misc/_terminal';
+    @import './components/misc/_blockui';
+    @import './components/misc/_badge';
+}

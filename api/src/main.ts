@@ -4,6 +4,8 @@ import mongoose from 'mongoose';
 import path from 'path';
 import { corsHandler } from './middlewares/cors';
 import { errorLogger, requestLogger } from './middlewares/logger';
+import router from './routes';
+import { exceptionHandler } from './middlewares/exceptionHandler';
 
 dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
@@ -19,8 +21,7 @@ app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
 });
 
-app.get('/', (req, res) => {
-  res.send("success");
-});
+app.use(router);
 
 app.use(errorLogger);
+app.use(exceptionHandler);

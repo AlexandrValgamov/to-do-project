@@ -1,0 +1,16 @@
+.form {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.formInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.formButtons {
+  display: flex;
+}

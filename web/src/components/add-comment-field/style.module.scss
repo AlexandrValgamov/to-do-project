@@ -1,0 +1,62 @@
+.container {
+  width: 100%;
+  position: relative;
+  & :global .react-input-emoji--input {
+    min-height: 112px
+  }
+  & :global .react-input-emoji--placeholder {
+    display: block;
+    top: 10px
+  }
+  & :global .react-emoji {
+    align-items: flex-start;
+  }
+  & :global .react-input-emoji--button {
+    margin-top: 10px;
+  }
+  & :global .react-input-emoji--container {
+    margin: 0;
+  }
+}
+
+.placeholder {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: var(--theme-black-80);
+  pointer-events: none;
+}
+
+.commentsResponseTextarea {
+  width: 100%;
+  height: 110px;
+
+  &:focus {
+    outline: 1px solid #FFF;
+    outline-offset: 0;
+    box-shadow: 0 0 0 3px #CFEFFC, 0 0 0 1px #FFF;
+    border-color: var(--theme-blue-80);
+  }
+  &:hover {
+    border-color: var(--theme-blue-80);
+  }
+}
+
+.emojiPickerContainer {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.emojiPicker {
+  color: var(--theme-black-80);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.emojiPickerBody {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 9;
+}
