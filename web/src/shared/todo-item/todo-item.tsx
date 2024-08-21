@@ -14,7 +14,14 @@ export const TodoItem: React.FC<TodoItemProps> = ({
   description,
   createdAt,
 }) => {
-  const created = new Date(createdAt).toLocaleDateString("en-CA");
+  const created = new Date(createdAt).toLocaleString("ru-RU", {
+    year: "numeric",
+    month: "short",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
 
   return (
     <div className={style.todoItemContainer}>
