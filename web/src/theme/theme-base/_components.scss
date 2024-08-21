@@ -23,4 +23,17 @@
     @import './components/button/_button';
     @import './components/button/_splitbutton';
     @import './components/button/_speeddial';
+
+    //Misc
+    @import './components/misc/_avatar';
+    @import './components/misc/_chip';
+    @import './components/misc/_scrolltop';
+    @import './components/misc/_skeleton';
+    @import './components/misc/_tag';
+    @import './components/misc/_inplace';
+    @import './components/misc/metergroup';
+    @import './components/misc/_progressbar';
+    @import './components/misc/_terminal';
+    @import './components/misc/_blockui';
+    @import './components/misc/_badge';
 }

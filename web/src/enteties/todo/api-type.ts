@@ -9,3 +9,14 @@ type TTodoData = {
 export type TResponseTodosData = {
   data: TTodoData[];
 }
+
+export type TCreateTodoRequest = {
+  title: string;
+  description: string;
+  userId: string;
+}
+
+export type TCreateTodoResponse = {
+  message: string;
+  data: TTodoData[];
+}

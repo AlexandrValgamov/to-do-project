@@ -1,36 +1,50 @@
 import api from "@/api";
 import style from "./style.module.scss";
 
-import { TodoItem } from "@/shared/todo-item/todo-item";
-import { useEffect, useState } from "react";
-import { useAppSelector } from "@/store/hooks";
-import { TAppTodosData } from "@/enteties/todo/app-types";
+import { TodoItem, TodoItemSkeleton } from "@/shared/todo-item/todo-item";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { todosActions } from "@/store/slices/todos/todos.slice";
 
 export const TodoList = () => {
-  const [data, setData] = useState<TAppTodosData>([]);
+  const { setTodos, setTodosLoading } = todosActions;
+  const dispatch = useAppDispatch();
+
   const userData = useAppSelector((state) => state.userSlice.userData);
-console.log("userData,", userData);
+  const { todosData, isLoading } = useAppSelector((state) => state.todosSlice);
+
+  const fetchTodos = async (id: string) => {
+    const response = await api.ApiRequest.getTodosByUSerId(id);
+    dispatch(setTodos(response));
+  };
 
   useEffect(() => {
     if (userData?._id) {
-      api.ApiRequest.getTodosByUSerId(userData?._id).then((res) => {
-        console.log("res ", res)
-        
-        setData(res.data);
+      dispatch(setTodosLoading(true));
+      fetchTodos(userData?._id).finally(() => {
+        dispatch(setTodosLoading(false));
       });
     }
   }, [userData]);
 
+  if (!isLoading)
+    return (
+      <div className={style.todoList}>
+        {todosData?.map(({ _id, title, description, createdAt }) => (
+          <TodoItem
+            key={_id}
+            createdAt={createdAt}
+            title={title}
+            description={description}
+          />
+        ))}
+      </div>
+    );
+
   return (
     <div className={style.todoList}>
-      {data.map(({ _id, title, description, createdAt }) => (
-        <TodoItem
-          key={_id}
-          createdAt={createdAt}
-          title={title}
-          description={description}
-        />
-      ))}
+      <TodoItemSkeleton />
+      <TodoItemSkeleton />
     </div>
   );
 };

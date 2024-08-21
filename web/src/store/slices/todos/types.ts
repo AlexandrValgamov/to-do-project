@@ -1,5 +1,6 @@
 import { TAppTodosData } from "@/enteties/todo/app-types";
 
 export interface ITodosState {
-  todosData: TAppTodosData | null;
+  todosData: TAppTodosData | [];
+  isLoading: boolean;
 }
