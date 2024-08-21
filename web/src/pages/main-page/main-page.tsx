@@ -18,8 +18,6 @@ export const Main = () => {
 
   const fetchUser = async () => {
     const response = await api.ApiRequest.getUserData();
-    console.log("response", response);
-    
     storage.setUserData(response);
     const mapData = mapUserData(response);
     dispatch(setUser(mapData));

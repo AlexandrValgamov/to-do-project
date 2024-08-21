@@ -4,18 +4,33 @@ import { TResponseTodosData } from "@/enteties/todo/api-type";
 import { mapTodosData } from "@/enteties/todo/mapping.api-to-app";
 
 const initialState: ITodosState = {
-  todosData: null,
+  todosData: [],
+  isLoading: false,
 };
 
 const todosSlice = createSlice({
-  name: "user",
+  name: "todo",
   initialState,
   reducers: {
-    setUser: (
+    setTodos: (
       state: Draft<ITodosState>,
       { payload }: PayloadAction<TResponseTodosData>
     ) => {
       state.todosData = mapTodosData(payload);
+    },
+    addTodo: (
+      state: Draft<ITodosState>,
+      { payload }: PayloadAction<TResponseTodosData>
+    ) => {
+      console.log("mapTodosData(payload)", mapTodosData(payload));
+
+      state.todosData = [...state.todosData, ...mapTodosData(payload)];
+    },
+    setTodosLoading: (
+      state: Draft<ITodosState>,
+      { payload }: PayloadAction<boolean>
+    ) => {
+      state.isLoading = payload;
     },
   },
 });
