@@ -36,4 +36,11 @@
     @import './components/misc/_terminal';
     @import './components/misc/_blockui';
     @import './components/misc/_badge';
+    
+    //Overlay
+    @import './components/overlay/_confirmpopup';
+    @import './components/overlay/_dialog';
+    @import './components/overlay/_overlaypanel';
+    @import './components/overlay/_sidebar';
+    @import './components/overlay/_tooltip';
 }

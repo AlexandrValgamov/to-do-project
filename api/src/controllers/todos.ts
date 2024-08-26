@@ -12,7 +12,7 @@ export const getTodos = async (
 ) => {
   const { userId } = req.params;
   try {
-    const data = await Todo.find({ userId });
+    const data = await Todo.find({ userId }).sort({ createdAt: -1 });
     if (!data || data.length === 0) {
       return res.send([]);
     }
@@ -27,9 +27,9 @@ export const createTodo = async (
   res: Response,
   next: NextFunction,
 ) => {
-  const { title, description, userId } = req.body;
+  const { title, description, priority, userId } = req.body;
   try {
-    const data = await Todo.create({ title, description, userId });
+    const data = await Todo.create({ title, description, userId, priority });
     res.send({ message: 'TODO создана', data: [data] });
   } catch (error) {
     next(error);

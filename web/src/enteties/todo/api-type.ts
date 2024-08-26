@@ -4,6 +4,7 @@ type TTodoData = {
   title: string,
   description: string,
   createdAt: string,
+  priority: "low" | "medium" | "high" | "highest",
 }
 
 export type TResponseTodosData = {
