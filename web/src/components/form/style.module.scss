@@ -3,6 +3,9 @@
   flex-direction: row;
   gap: 1rem;
   align-items: stretch;
+  background-color: var(--theme-main-primaryColorDeep);
+  padding: 1rem;
+  border-radius: 1rem;
 }
 
 .formInputs {
