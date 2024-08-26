@@ -17,7 +17,10 @@
   background-color: var(--theme-green-60);
 }
 
-.todoItemBottomContent {
+.todoItemBottomContent{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
   border: 1px solid green;
   border-top: none;
   border-bottom-left-radius: 0.5rem;

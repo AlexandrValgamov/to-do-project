@@ -22,9 +22,7 @@ const todosSlice = createSlice({
       state: Draft<ITodosState>,
       { payload }: PayloadAction<TResponseTodosData>
     ) => {
-      console.log("mapTodosData(payload)", mapTodosData(payload));
-
-      state.todosData = [...state.todosData, ...mapTodosData(payload)];
+      state.todosData = [...mapTodosData(payload), ...state.todosData];
     },
     setTodosLoading: (
       state: Draft<ITodosState>,

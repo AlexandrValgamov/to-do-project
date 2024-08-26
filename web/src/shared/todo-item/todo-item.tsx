@@ -1,18 +1,27 @@
 import { Skeleton } from "primereact/skeleton";
+import { Tooltip } from "primereact/tooltip";
 import style from "./style.module.scss";
+
+interface IPriorityData {
+  icon: string;
+  color: string;
+}
 interface TodoItemProps {
   title: string;
   description: string;
-  priority?: "low" | "medium" | "high";
+  priority: "low" | "medium" | "high" | "highest";
   state?: "todo" | "in-progress" | "done";
   createdAt: string;
   expiresIn?: Date;
+  priorityData: IPriorityData;
 }
 
 export const TodoItem: React.FC<TodoItemProps> = ({
   title,
   description,
+  priority,
   createdAt,
+  priorityData,
 }) => {
   const created = new Date(createdAt).toLocaleString("ru-RU", {
     year: "numeric",
@@ -30,6 +39,16 @@ export const TodoItem: React.FC<TodoItemProps> = ({
         <div className={style.todoListDate}>{created}</div>
       </div>
       <div className={style.todoItemBottomContent}>
+        <Tooltip
+          target=".custom-target-icon"
+        />
+        <i
+          className={`custom-target-icon pi pi-${priorityData.icon}`}
+          style={{ color: priorityData.color, cursor: "pointer" }}
+          data-pr-tooltip={priority}
+          data-pr-position="right"
+          // data-pr-at="right+5 bottom"
+        />
         <p className={style.todoItemText}>{description}</p>
       </div>
     </div>
