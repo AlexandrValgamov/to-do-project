@@ -1,0 +1,11 @@
+.defaultLayoutContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.defaultLayoutHeader {
+  display: flex;
+  height: 4rem;
+  width: 100%;
+  background-color: var(--theme-main-primaryColorDeep);
+}
