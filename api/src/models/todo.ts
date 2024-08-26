@@ -17,8 +17,8 @@ const todoSchema = new mongoose.Schema(
     },
     priority: {
       type: String,
-      enum: ['low', 'medium', 'high'],
-      // required: [true, 'Поле "priority" должно быть заполнено'],
+      enum: ['low', 'medium', 'high', 'highest'],
+      required: [true, 'Поле "priority" должно быть заполнено'],
     },
     state: {
       type: String,
@@ -28,7 +28,7 @@ const todoSchema = new mongoose.Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      // required: true,
+      required: true,
     },
     expiresIn: {
       type: Date,
