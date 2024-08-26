@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
 
-    "target": "ES2020",
+    "target": "ES6",
     "useDefineForClassFields": true,
     "lib": ["ES2021", "DOM", "DOM.Iterable"],
     "module": "ESNext",

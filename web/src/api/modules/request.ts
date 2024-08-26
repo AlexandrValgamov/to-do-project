@@ -1,5 +1,6 @@
 import { TCreateTodoRequest, TCreateTodoResponse, TResponseTodosData } from "@/enteties/todo/api-type";
 import { TResponseUserData } from "@/enteties/user/api.types";
+import { TLoginRequest } from "@/enteties/user/app.types";
 import { Axios } from "axios";
 
 export default class ApiRequest {
@@ -21,6 +22,11 @@ export default class ApiRequest {
 
   async createTodo(data: TCreateTodoRequest): Promise<TCreateTodoResponse> {
     const { data: newData } = await this.axios.post("/todos", data);
+    return newData;
+  }
+
+  async login(data: TLoginRequest): Promise<TResponseUserData> {
+    const { data: newData } = await this.axios.post("/auth/login", data);
     return newData;
   }
 }

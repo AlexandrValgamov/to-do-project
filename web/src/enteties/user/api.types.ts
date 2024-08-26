@@ -9,7 +9,7 @@
 
 export type TResponseUserData = {
   data: {
-      id: string,
+      _id: string,
       name: string
   }
 }
