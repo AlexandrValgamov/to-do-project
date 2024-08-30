@@ -31,7 +31,7 @@ const routes = [
       },
       {
         path: `*`,
-        element: <Navigate to={`/signin`} replace={true} />,
+        element: <Navigate to={`/auth/signin`} replace={true} />,
       },
     ],
   },
