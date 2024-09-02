@@ -10,18 +10,19 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border: 1px solid green;
+  border: 1px solid var(--theme-main-primaryColor);
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
   padding: 0.3rem 0.5rem;
-  background-color: var(--theme-green-60);
+  background-color: var(--theme-main-primaryColor);
 }
 
 .todoItemBottomContent{
   display: flex;
   gap: 1rem;
   align-items: center;
-  border: 1px solid green;
+  border: 2px solid var(--theme-main-primaryColor);
+  background-color: var(--theme-main-primaryColorLight);
   border-top: none;
   border-bottom-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
