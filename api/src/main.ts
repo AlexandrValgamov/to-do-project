@@ -1,19 +1,18 @@
-import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
-import path from 'path';
 import { corsHandler } from './middlewares/cors';
 import { errorLogger, requestLogger } from './middlewares/logger';
 import router from './routes';
 import { exceptionHandler } from './middlewares/exceptionHandler';
 import { signinValidation, signupValidation } from './middlewares/validation';
 import { createUser, login } from './controllers/users';
+import { configDotenv } from 'dotenv';
 
-dotenv.config({ path: path.resolve(__dirname, '../../.env') });
+configDotenv();
+const app = express();
 
 const { PORT, MONGO_URL = '' } = process.env;
 
-const app = express();
 mongoose.connect(MONGO_URL);
 app.use(express.json());
 app.use(corsHandler);

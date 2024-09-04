@@ -1,8 +1,5 @@
 import { Router } from 'express';
-const {
-  getTodos,
-  createTodo
-} = require('../controllers/todos');
+import { createTodo, getTodos } from '../controllers/todos';
 
 const todoRouter = Router();
 
