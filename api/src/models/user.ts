@@ -1,9 +1,4 @@
-import { model, Schema } from 'mongoose';
-
-interface IUser {
-  name: string;
-  password: string;
-}
+import mongoose from 'mongoose';
 
 const userSchema = new Schema<IUser>(
   {

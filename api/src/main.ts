@@ -4,11 +4,9 @@ import { corsHandler } from './middlewares/cors';
 import { errorLogger, requestLogger } from './middlewares/logger';
 import router from './routes';
 import { exceptionHandler } from './middlewares/exceptionHandler';
-import { signinValidation, signupValidation } from './middlewares/validation';
-import { createUser, login } from './controllers/users';
-import { configDotenv } from 'dotenv';
+import dotenv from 'dotenv'
 
-configDotenv();
+dotenv.config();
 const app = express();
 
 const { PORT, MONGO_URL = '' } = process.env;
