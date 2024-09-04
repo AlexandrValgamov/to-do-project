@@ -8,8 +8,10 @@ import { SidebarWrapper } from "@/hocs/sidebar-wrapper/sidebar-wrapper ";
 import { storage } from "@/storage";
 import { useAppDispatch } from "@/store/hooks";
 import { userActions } from "@/store/slices/user/user.slice";
+import { addLocale } from "primereact/api";
 import { Calendar } from "primereact/calendar";
 import { useEffect, useState } from "react";
+import locale_ru from "primelocale/ru.json";
 
 export const Main = () => {
   const { setUser, setIsAuth } = userActions;
@@ -23,6 +25,8 @@ export const Main = () => {
     dispatch(setUser(mapData));
     dispatch(setIsAuth(true));
   };
+  // Добавление русской локализации из библиотеки
+  addLocale("ru", locale_ru.ru);
 
   useEffect(() => {
     fetchUser();
@@ -41,6 +45,7 @@ export const Main = () => {
             if (e.value) setDate(e.value);
           }}
           inline
+          locale="ru"
         />
       </SidebarWrapper>
     </PageWrapper>

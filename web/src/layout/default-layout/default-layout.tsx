@@ -10,7 +10,7 @@ export const DefaultLayout = () => {
   return (
     <div className={style.defaultLayoutContainer}>
       <div className={style.defaultLayoutHeader} />
-      <ProtectedRoute loggedIn>
+      <ProtectedRoute>
         <Outlet key={locationPath} />
       </ProtectedRoute>
     </div>

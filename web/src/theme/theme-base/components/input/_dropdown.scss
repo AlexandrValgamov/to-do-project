@@ -4,7 +4,6 @@
     cursor: pointer;
     position: relative;
     user-select: none;
-    font-family: 'Inter'
 }
 
 .p-dropdown-clear-icon {
@@ -54,7 +53,6 @@ input.p-dropdown-label {
 }
 
 .p-dropdown-item {
-    font-family: 'Inter';
     cursor: pointer;
     font-weight: normal;
     white-space: nowrap;
@@ -103,7 +101,6 @@ input.p-dropdown-label {
     transition: $formElementTransition;
     border-radius: $borderRadius;
     outline-color: transparent;
-    width: 100%;
 
     &:not(.p-disabled):hover {
         border-color: $inputHoverBorderColor;
@@ -151,17 +148,11 @@ input.p-dropdown-label {
     }
 
     .p-dropdown-trigger {
-        background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPG1hc2sgaWQ9Im1hc2swXzhfMTA3IiBzdHlsZT0ibWFzay10eXBlOmFscGhhIiBtYXNrVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4PSIwIiB5PSIwIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiPgo8cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNEOUQ5RDkiLz4KPC9tYXNrPgo8ZyBtYXNrPSJ1cmwoI21hc2swXzhfMTA3KSI+CjxwYXRoIGQ9Ik0xMS40NzUgMTQuNDc1TDcuODUwMDEgMTAuODVDNy44MDAwMSAxMC44IDcuNzYyNTEgMTAuNzQ1OCA3LjczNzUxIDEwLjY4NzVDNy43MTI1MSAxMC42MjkyIDcuNzAwMDEgMTAuNTY2NyA3LjcwMDAxIDEwLjVDNy43MDAwMSAxMC4zNjY3IDcuNzQ1ODUgMTAuMjUgNy44Mzc1MSAxMC4xNUM3LjkyOTE4IDEwLjA1IDguMDUwMDEgMTAgOC4yMDAwMSAxMEgxNS44QzE1Ljk1IDEwIDE2LjA3MDggMTAuMDUgMTYuMTYyNSAxMC4xNUMxNi4yNTQyIDEwLjI1IDE2LjMgMTAuMzY2NyAxNi4zIDEwLjVDMTYuMyAxMC41MzMzIDE2LjI1IDEwLjY1IDE2LjE1IDEwLjg1TDEyLjUyNSAxNC40NzVDMTIuNDQxNyAxNC41NTgzIDEyLjM1ODMgMTQuNjE2NyAxMi4yNzUgMTQuNjVDMTIuMTkxNyAxNC42ODMzIDEyLjEgMTQuNyAxMiAxNC43QzExLjkgMTQuNyAxMS44MDgzIDE0LjY4MzMgMTEuNzI1IDE0LjY1QzExLjY0MTcgMTQuNjE2NyAxMS41NTgzIDE0LjU1ODMgMTEuNDc1IDE0LjQ3NVoiIGZpbGw9IiNBMEEwQTciLz4KPC9nPgo8L3N2Zz4K');
-        background-position: center;
-        background-repeat: no-repeat;
+        background: transparent;
         color: $inputIconColor;
         width: $inputGroupAddOnMinWidth;
         border-top-right-radius: $borderRadius;
         border-bottom-right-radius: $borderRadius;
-
-        svg {
-            display: none;
-        }
     }
 
     .p-dropdown-clear-icon {
