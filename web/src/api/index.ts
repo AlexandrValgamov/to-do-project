@@ -6,6 +6,7 @@ class Api {
 
   ApiRequest: ApiRequest;
 
+  
   constructor() {
     this.axios = axios.create({
       baseURL: "http://localhost:3001",
