@@ -20,24 +20,6 @@
 
 .p-error {
     color: $errorColor;
-
-    &--form {
-        font-size: 10px;
-        left: 0;
-        display: block;
-        line-height: 10px;
-        position: relative;
-        top: 3px;
-    }
-
-    &--block {
-        position: absolute;
-        font-size: 10px;
-        left: 0;
-        display: block;
-        line-height: 10px;
-        bottom: -2px;
-    }
 }
 
 .p-text-secondary {

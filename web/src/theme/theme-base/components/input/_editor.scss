@@ -86,15 +86,6 @@
             color: $inputTextColor;
             border-bottom-right-radius: $borderRadius;
             border-bottom-left-radius: $borderRadius;
-            font-size: 16px;
-            line-height: 24px;
-            font-family: Inter;
-            font-weight: 500;
-
-            &.ql-blank::before {
-                color: var(--theme-black-50);
-                font-style: normal;
-            }
         }
     }
 

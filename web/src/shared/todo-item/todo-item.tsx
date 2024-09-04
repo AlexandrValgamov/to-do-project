@@ -1,6 +1,7 @@
 import { Skeleton } from "primereact/skeleton";
 import { Tooltip } from "primereact/tooltip";
 import style from "./style.module.scss";
+import { FC } from "react";
 
 interface IPriorityData {
   icon: string;
@@ -16,7 +17,7 @@ interface TodoItemProps {
   priorityData: IPriorityData;
 }
 
-export const TodoItem: React.FC<TodoItemProps> = ({
+export const TodoItem: FC<TodoItemProps> = ({
   title,
   description,
   priority,
@@ -55,7 +56,7 @@ export const TodoItem: React.FC<TodoItemProps> = ({
   );
 };
 
-export const TodoItemSkeleton: React.FC = () => {
+export const TodoItemSkeleton: FC = () => {
   return (
     <div className={style.todoItemContainer}>
       <div className={style.todoItemTopContent}>

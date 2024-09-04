@@ -14,7 +14,6 @@
 	color: $calendarTextColor;
 	border: $calendarBorder;
 	border-radius: $borderRadius;
-  width: auto !important;
 
 	&:not(.p-datepicker-inline) {
 		background: $calendarBg;
@@ -186,11 +185,11 @@
 
 			&:first-child {
 				padding-left: 0;
+				border-left: 0 none;
 			}
 
 			&:last-child {
 				padding-right: 0;
-				border-left: 0 none;
 			}
 		}
 	}
