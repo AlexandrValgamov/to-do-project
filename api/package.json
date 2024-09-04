@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "author": "",
+  "type": "module",
   "main": "src/main.ts",
+  "module": "src/main.ts",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon --exec ts-node src/main.ts",
+    "start": "nodemon --exec ts-node-esm src/main.ts",
     "lint": "eslint \"src/**/*.{js,ts}\""
   },
   "dependencies": {
