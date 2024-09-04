@@ -3,15 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "author": "",
+  "type": "module",
   "main": "src/main.ts",
+  "module": "src/main.ts",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon --exec ts-node src/main.ts",
+    "start": "nodemon --exec ts-node-esm src/main.ts",
     "lint": "eslint \"src/**/*.{js,ts}\""
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.7",
     "bcrypt": "^5.1.1",
+    "celebrate": "^15.0.3",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-winston": "^4.2.0",

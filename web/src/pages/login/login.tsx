@@ -1,13 +1,17 @@
 import style from "./style.module.scss";
-import { InputText } from "primereact/inputtext";
-import { FloatLabel } from "primereact/floatlabel";
 import { useFormik } from "formik";
-import { Button } from "primereact/button";
 import api from "@/api";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { userActions } from "@/store/slices/user/user.slice";
+import { FormInput } from "@/components/form-input";
+import { FormButton } from "@/components/form-button";
 
 export const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const { setIsAuth } = userActions;
+  const isAuth = useAppSelector((state) => state.userSlice.isAuth);
 
   const formik = useFormik({
     initialValues: {
@@ -15,14 +19,13 @@ export const Login = () => {
       password: "",
     },
     onSubmit: (values) => {
-      console.log("values", values);
       api.ApiRequest.login({
-        name: values.username,
+        username: values.username,
         password: values.password,
       })
-        .then(() => {
-          // handleAuthorize(email);
-          // resetForm();
+        .then((data) => {
+          console.log("response", data);
+          dispatch(setIsAuth(true));
           navigate("/", { replace: true });
         })
         .catch(() => {
@@ -31,33 +34,27 @@ export const Login = () => {
     },
   });
 
-  return (
+  return isAuth ? (
+    <Navigate to="/" replace />
+  ) : (
     <div>
-      <div className={style.loginTitle}>Вход</div>
+      <h2 className={style.loginTitle}>Вход</h2>
       <form className={style.form} onSubmit={formik.handleSubmit}>
-        <FloatLabel>
-          <InputText
-            id="username"
-            type="text"
-            className="p-inputtext-sm"
-            onChange={formik.handleChange}
-            value={formik.values.username}
-          />
-          <label htmlFor="username">Логин</label>
-        </FloatLabel>
-        <FloatLabel>
-          <InputText
-            id="password"
-            type="password"
-            className="p-inputtext-sm"
-            onChange={formik.handleChange}
-            value={formik.values.password}
-          />
-          <label htmlFor="password">Пароль</label>
-        </FloatLabel>
-        <div className={style.formButton}>
-          <Button label="Submit" type="submit" severity="success" />
-        </div>
+        <FormInput
+          value={formik.values.username}
+          onChange={formik.handleChange}
+          id="username"
+          type="text"
+          label="Логин"
+        />
+        <FormInput
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          id="password"
+          type="password"
+          label="Пароль"
+        />
+        <FormButton label="Войти" type="submit" />
       </form>
     </div>
   );

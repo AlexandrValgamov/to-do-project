@@ -1,4 +1,5 @@
-import { Request, Response, NextFunction } from "express";
+import { Request, Response, NextFunction } from 'express';
+import jwt from 'jsonwebtoken';
 
 const { JWT_SECRET, NODE_ENV } = process.env;
 export const auth = (req: Request, res: Response, next: NextFunction) => {
@@ -10,15 +11,22 @@ export const auth = (req: Request, res: Response, next: NextFunction) => {
     }
 
     const validToken = token.replace('Bearer ', '');
-    payload = Jwt.verify(validToken, NODE_ENV ? JWT_SECRET : '980758d3d66cd05999d3bf561c2e242bb093fcb6006061b4ac06ced07d36a620');
+    payload = jwt.verify(
+      validToken,
+      NODE_ENV
+        ? JWT_SECRET
+        : '980758d3d66cd05999d3bf561c2e242bb093fcb6006061b4ac06ced07d36a620',
+    );
   } catch (error) {
-    if (error instanceof jwt.TokenExpiredError) {
-      return next(new UnauthorizedError('Истек срок действия токена'));
-    }
-    if (error instanceof jwt.JsonWebTokenError) {
-      return next(new UnauthorizedError('Ошибка валидации токена'));
-    }
-    return next(new UnauthorizedError('С токеном что-то не так'));
+    console.log(error);
+
+    // if (error instanceof jwt.TokenExpiredError) {
+    //   return next(new UnauthorizedError('Истек срок действия токена'));
+    // }
+    // if (error instanceof jwt.JsonWebTokenError) {
+    //   return next(new UnauthorizedError('Ошибка валидации токена'));
+    // }
+    // return next(new UnauthorizedError('С токеном что-то не так'));
   }
   req.user = payload;
   next();
