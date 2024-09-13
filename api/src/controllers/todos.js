@@ -1,15 +1,6 @@
-import { Request, Response, NextFunction } from 'express';
-import Todo from '../models/todo';
+import Todo from '../models/todo.js';
 
-interface CustomRequest extends Request {
-  user: { _id: string };
-}
-
-export const getTodos = async (
-  req: CustomRequest,
-  res: Response,
-  next: NextFunction,
-) => {
+export const getTodos = async (req, res, next) => {
   const { userId } = req.params;
   try {
     const data = await Todo.find({ userId }).sort({ createdAt: -1 });
@@ -22,11 +13,7 @@ export const getTodos = async (
   }
 };
 
-export const createTodo = async (
-  req: CustomRequest,
-  res: Response,
-  next: NextFunction,
-) => {
+export const createTodo = async (req, res, next) => {
   const { title, description, priority, userId } = req.body;
   try {
     const data = await Todo.create({ title, description, userId, priority });

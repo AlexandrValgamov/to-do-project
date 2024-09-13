@@ -1,8 +1,7 @@
-import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
 const { JWT_SECRET, NODE_ENV } = process.env;
-export const auth = (req: Request, res: Response, next: NextFunction) => {
+export const auth = (req, next) => {
   let payload;
   try {
     const token = req.headers.authorization;

@@ -1,11 +1,6 @@
-import { Request, Response, NextFunction } from 'express';
-import { allowedCors, DEFAULT_ALLOWED_METHODS } from '../utils';
+import { allowedCors, DEFAULT_ALLOWED_METHODS } from '../utils/constants.js';
 
-export const corsHandler = (
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) => {
+export const corsHandler = (req, res, next) => {
   const { origin = '' } = req.headers;
   const { method } = req;
   const requestHeaders = req.headers['access-control-request-headers'];
