@@ -1,26 +1,20 @@
-import globals from "globals";
-import pluginJs from "@eslint/js";
-import tseslint from "typescript-eslint";
-import tsParser from "@typescript-eslint/parser";
+// eslint.config.mjs в корне проекта
+
+import apiConfig from "./api/eslint.config.mjs";
+import webConfig from "./web/eslint.config.mjs";
 
 export default [
   {
-    files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
+    // Общие настройки для всего проекта
     languageOptions: {
-      parser: tsParser,
-      parserOptions: {
-        ecmaVersion: 2021,
-        sourceType: "module",
-      },
-      globals: globals.browser,
-    },
-    plugins: {
-      "@typescript-eslint": tseslint,
+      ecmaVersion: 2021,
+      sourceType: "module",
     },
     rules: {
-      ...pluginJs.configs.recommended.rules,
-      ...tseslint.configs.recommended.rules,
-      "react/react-in-jsx-scope": "off",
+      "no-console": "warn",
+      "no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
     },
   },
+  ...apiConfig,
+  ...webConfig,
 ];

@@ -35,7 +35,7 @@ const todoSchema = new mongoose.Schema(
       // required: [true, 'Поле "expiresIn" должно быть заполнено'],
     },
   },
-  { versionKey: false }
+  { versionKey: false },
 );
 
 export default mongoose.model('todo', todoSchema);

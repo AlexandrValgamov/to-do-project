@@ -77,7 +77,12 @@ export const Form = () => {
           />
         </div>
         <div className={style.formButtons}>
-          <Button aria-label="submit" icon="pi pi-check" type="submit" severity="success" />
+          <Button
+            aria-label="submit"
+            icon="pi pi-check"
+            type="submit"
+            severity="success"
+          />
         </div>
       </form>
     </div>

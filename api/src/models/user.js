@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+import { model, Schema } from 'mongoose';
 
-const userSchema = new Schema<IUser>(
+const userSchema = new Schema(
   {
     name: {
       type: String,
@@ -17,4 +17,4 @@ const userSchema = new Schema<IUser>(
   { versionKey: false },
 );
 
-export const User = model<IUser>('user', userSchema);
+export const User = model('user', userSchema);

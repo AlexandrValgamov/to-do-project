@@ -1,14 +1,9 @@
-import { Request, Response, NextFunction } from 'express';
-import { User } from '../models/user';
+import { User } from '../models/user.js';
 import bcrypt from 'bcrypt';
 import mongoose from 'mongoose';
-import { generateToken } from '../utils';
+import { generateToken } from '../utils/jwt.js';
 
-export const createUser = async (
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) => {
+export const createUser = async (req, res, next) => {
   const { name, password } = req.body;
   try {
     const hash = await bcrypt.hash(password, 10);
@@ -24,11 +19,7 @@ export const createUser = async (
   }
 };
 
-export const login = async (
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) => {
+export const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email }).select('+password').orFail();
@@ -48,11 +39,7 @@ export const login = async (
   }
 };
 
-export const getUserById = async (
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) => {
+export const getUserById = async (req, res, next) => {
   const { userId } = req.params;
 
   try {

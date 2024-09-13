@@ -1,35 +1,26 @@
-import globals from 'globals';
-import pluginJs from '@eslint/js';
-import tseslint from '@typescript-eslint/eslint-plugin';
-import tsParser from '@typescript-eslint/parser';
-import pluginReact from 'eslint-plugin-react';
+// eslint.config.mjs в каталоге api
+
+import prettier from 'eslint-plugin-prettier';
+import importPlugin from 'eslint-plugin-import';
+import node from 'eslint-plugin-node';
+
+const baseRules = {
+  'prettier/prettier': ['error', { endOfLine: 'auto' }],
+  'no-console': 'off',
+  'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+};
 
 export default [
   {
-    env: {
-      node: true,
-      es2021: true,
-    },
-    files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
     languageOptions: {
-      parser: tsParser,
-      parserOptions: {
-        ecmaVersion: 2021,
-        sourceType: 'module',
-      },
-      globals: {
-        ...globals.browser,
-      },
+      ecmaVersion: 2021,
+      sourceType: 'module',
     },
     plugins: {
-      '@typescript-eslint': tseslint,
-      react: pluginReact,
+      prettier,
+      import: importPlugin,
+      node,
     },
-    rules: {
-      ...pluginJs.configs.recommended.rules,
-      ...tseslint.configs.recommended.rules,
-      ...pluginReact.configs.recommended.rules,
-      'no-undef': 'off',
-    },
+    rules: baseRules,
   },
 ];

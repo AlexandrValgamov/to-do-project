@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import userRouter from './users';
-import todoRouter from './todos';
+import userRouter from './users.js';
+import todoRouter from './todos.js';
 
 const router = Router();
 
