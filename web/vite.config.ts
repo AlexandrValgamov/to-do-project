@@ -11,6 +11,12 @@ const __dirname = path.dirname(__filename);
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [svgr(), react()],
+  server: {
+    hmr: true, // Включает Hot Module Replacement (HMR)
+    watch: {
+      usePolling: true, // Добавить, если работаете на WSL или в Docker
+    },
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -21,7 +27,8 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: '@import "@assets/css/responsive.scss";',
+        api: 'modern',
+        additionalData: '@import "@/assets/css/responsive.scss";',
       },
     },
   },

@@ -1,6 +1,6 @@
 import React from "react";
 import { InputText } from "primereact/inputtext";
-import { FloatLabel } from "primereact/floatlabel";
+import style from "./style.module.scss";
 
 interface FormInputProps {
   id: string;
@@ -10,15 +10,17 @@ interface FormInputProps {
   label: string;
 }
 
-export const FormInput: React.FC<FormInputProps> = ({ id, type, value, onChange, label }) => (
-  <FloatLabel>
-    <InputText
-      id={id}
-      type={type}
-      className="p-inputtext-sm"
-      onChange={onChange}
-      value={value}
-    />
-    <label htmlFor={id}>{label}</label>
-  </FloatLabel>
-);
+export const FormInput: React.FC<FormInputProps> = ({
+  id,
+  type,
+  value,
+  onChange,
+  label,
+}) => {
+  return (
+    <div className={style.input}>
+      <label htmlFor={id}>{label}</label>
+      <InputText id={id} type={type} onChange={onChange} value={value} />
+    </div>
+  );
+};

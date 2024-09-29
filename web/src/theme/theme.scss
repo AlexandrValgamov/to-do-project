@@ -100,9 +100,9 @@ $scaleLG: 1.25 !default;
 
 //focus
 $focusOutlineColor: $themeBlue100 !default;
-$focusOutline: 1px solid #fff !default;
+$focusOutline: 1px solid #50514F !default;
 $focusOutlineOffset: 0 !default;
-$focusShadow: 0 0 0 3px $themeBlue5, 0 0 0 1px #fff !default;
+$focusShadow: 0 0 0 3px #3D3E3D, 0 0 0 1px #50514F !default;
 
 //action icons
 $actionIconWidth: 2rem !default;
@@ -992,10 +992,13 @@ $todoItemContainerRadius: 25% !default;
   --theme-orange-60: #ffcb04;
   --theme-orange-10: #fffdf5;
 
-  --theme-main-primaryColor: #A6B37D;
-  --theme-main-primaryColorLight: #C0C78C;
-  --theme-main-primaryColorDark: #B99470;
-  --theme-main-primaryColorDeep: #FEFAE0;
+  --theme-primaryColor: #CBD4C2;
+  --theme-primaryColorLight: #FFFCFF;
+  --theme-primaryColorDark: #50514F;
+  --theme-primaryColorDarkActive: #3D3E3D;
+  --theme-primaryColorDeep: #247BA0;
+  --theme-primaryColorDeepActive: #1E6685;
+  --theme-primaryColorSecondary: #C3B299;
 }
 @import "./_fonts";
 @import "./theme-base/_components";

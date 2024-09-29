@@ -19,12 +19,16 @@ export const Login = () => {
       password: "",
     },
     onSubmit: (values) => {
+      console.log("values", values);
+
       api.ApiRequest.login({
         username: values.username,
         password: values.password,
       })
         .then((data) => {
-          console.log("response", data);
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("userId", data.userId);
+
           dispatch(setIsAuth(true));
           navigate("/", { replace: true });
         })
@@ -37,9 +41,9 @@ export const Login = () => {
   return isAuth ? (
     <Navigate to="/" replace />
   ) : (
-    <div>
-      <h2 className={style.loginTitle}>Вход</h2>
-      <form className={style.form} onSubmit={formik.handleSubmit}>
+    <div className={style.login}>
+      <h2 className={style.login__title}>Вход</h2>
+      <form className={style.login__form} onSubmit={formik.handleSubmit}>
         <FormInput
           value={formik.values.username}
           onChange={formik.handleChange}
