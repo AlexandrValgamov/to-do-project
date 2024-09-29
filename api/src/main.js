@@ -10,6 +10,7 @@ import {
   signinValidation,
 } from './middlewares/validation.js';
 import { createUser, login } from './controllers/users.js';
+import { errors } from 'celebrate';
 
 console.log('Loaded environment variables:', process.env.MONGO_URL);
 const app = express();
@@ -31,4 +32,5 @@ app.post('/signin', signinValidation, login);
 app.use(router);
 
 app.use(errorLogger);
+app.use(errors());
 app.use(exceptionHandler);
