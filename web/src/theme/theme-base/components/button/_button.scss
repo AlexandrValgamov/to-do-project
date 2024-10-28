@@ -1,22 +1,22 @@
 .p-button {
     color: $buttonTextColor;
-    background: $buttonBg;
-    border: $buttonBorder;
+    background: var(--theme-primaryColorDarkActive);
+    border: var(--theme-primaryColorDark);
     padding: $buttonPadding;
     font-size: $fontSize;
     transition: $formElementTransition;
     border-radius: $borderRadius;
 
     &:not(:disabled):hover {
-        background: $buttonHoverBg;
+        background: var(--theme-primaryColorDark);
         color: $buttonTextHoverColor;
         border-color: $buttonHoverBorderColor;
     }
 
     &:not(:disabled):active {
-        background: $buttonActiveBg;
+        background: var(--theme-primaryColorDeepActive);
         color: $buttonTextActiveColor;
-        border-color: $buttonActiveBorderColor;
+        border-color: var(--theme-primaryColorDark);
     }
 
     &.p-button-outlined {
