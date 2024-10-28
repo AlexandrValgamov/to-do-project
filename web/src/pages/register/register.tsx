@@ -4,14 +4,18 @@ import api from "@/api";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { userActions } from "@/store/slices/user/user.slice";
-import { FormInput } from "@/components/form-input";
-import { FormButton } from "@/components/form-button";
+import { FormButton } from "@/components/form-button/form-button";
+import { FormInput } from "@/components/form-input/form-input";
+import { Link } from "react-router-dom";
+import { classNames } from "primereact/utils";
 
 export const Register = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { setIsAuth } = userActions;
   const isAuth = useAppSelector((state) => state.userSlice.isAuth);
+
+  document.title = "Регистрация";
 
   const formik = useFormik({
     initialValues: {
@@ -20,7 +24,7 @@ export const Register = () => {
     },
     onSubmit: (values) => {
       console.log("values", values);
-      
+
       api.ApiRequest.createUser({
         username: values.username,
         password: values.password,
@@ -58,6 +62,7 @@ export const Register = () => {
         />
         <FormButton label="Регистрация" type="submit" />
       </form>
+      <Link className={classNames(style.login__link, "p-link")} to="/auth/signin">войти</Link>
     </div>
   );
 };

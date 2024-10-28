@@ -10,11 +10,9 @@ const __dirname = path.dirname(__filename);
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  server: {
-    port: 3000,
-  },
   plugins: [svgr(), react()],
   server: {
+    port: 3000,
     hmr: true, // Включает Hot Module Replacement (HMR)
     watch: {
       usePolling: true, // Добавить, если работаете на WSL или в Docker
@@ -30,7 +28,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: '@use "@assets/css/responsive.scss";',
+        additionalData: '@import "@assets/css/responsive.scss";',
       },
     },
   },

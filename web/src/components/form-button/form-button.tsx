@@ -9,6 +9,6 @@ interface FormButtonProps {
 
 export const FormButton: React.FC<FormButtonProps> = ({ label, type }) => (
   <div className={style.formButton}>
-    <Button label={label} type={type} />
+    <Button label={label} type={type} className={style.formButton__button} />
   </div>
 );

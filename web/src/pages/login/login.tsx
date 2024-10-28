@@ -4,14 +4,17 @@ import api from "@/api";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { userActions } from "@/store/slices/user/user.slice";
-import { FormInput } from "@/components/form-input";
-import { FormButton } from "@/components/form-button";
+import { FormInput } from "@/components/form-input/form-input";
+import { FormButton } from "@/components/form-button/form-button";
+import { Link } from "react-router-dom";
 
 export const Login = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { setIsAuth } = userActions;
   const isAuth = useAppSelector((state) => state.userSlice.isAuth);
+
+  document.title = "Login";
 
   const formik = useFormik({
     initialValues: {
@@ -60,6 +63,7 @@ export const Login = () => {
         />
         <FormButton label="Войти" type="submit" />
       </form>
+      <Link className={style.login__link} to="/auth/signup">регистрация</Link>
     </div>
   );
 };
