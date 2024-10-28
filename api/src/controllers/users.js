@@ -1,15 +1,15 @@
-import { User } from '../models/user.js';
 import bcrypt from 'bcrypt';
 import mongoose from 'mongoose';
 import { generateToken } from '../utils/jwt.js';
 import { UnauthorizedError } from '../errors/unauthorized.js';
+import { User } from '../models/user.js';
 
 export const createUser = async (req, res, next) => {
-  const { name, password } = req.body;
+  const { email, password } = req.body;
   try {
     const hash = await bcrypt.hash(password, 10);
     const newUser = await User.create({
-      name,
+      email,
       password: hash,
     });
     res.status(201).send({
@@ -30,7 +30,6 @@ export const login = async (req, res, next) => {
       throw new UnauthorizedError('Неправильные почта или пароль');
     }
     const token = generateToken({ _id: user._id });
-    console.log('token', token);
 
     res.send({ token, userId: user._id });
   } catch (error) {
