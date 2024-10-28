@@ -1,6 +1,9 @@
 .formButton {
-  display: contents;
-  justify-content: center;
-  align-items: center;
+  max-width: 350px;
   width: 100%;
+  margin-top: 1rem;
+
+  &__button {
+    width: 100%;
+  }
 }
