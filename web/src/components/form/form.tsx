@@ -5,12 +5,12 @@ import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import { InputTextarea } from "primereact/inputtextarea";
 import api from "@/api";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { useAppDispatch } from "@/store/hooks";
 import { todosActions } from "@/store/slices/todos/todos.slice";
 import { SelectButton } from "primereact/selectbutton";
 
 export const Form = () => {
-  const userData = useAppSelector((state) => state.userSlice.userData);
+  const userId = localStorage.getItem("userId");
   const dispatch = useAppDispatch();
   const { addTodo } = todosActions;
 
@@ -24,7 +24,7 @@ export const Form = () => {
       console.log("values", values);
       api.ApiRequest.createTodo({
         ...values,
-        userId: userData?._id || "",
+        userId: userId || "",
       }).then((res) => {
         dispatch(addTodo({ data: res.data }));
       });
@@ -77,7 +77,12 @@ export const Form = () => {
           />
         </div>
         <div className={style.formButtons}>
-          <Button aria-label="submit" icon="pi pi-check" type="submit" severity="success" />
+          <Button
+            aria-label="submit"
+            icon="pi pi-check"
+            type="submit"
+            severity="success"
+          />
         </div>
       </form>
     </div>

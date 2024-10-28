@@ -8,8 +8,9 @@
 // }>
 
 export type TResponseUserData = {
-  data: {
-      _id: string,
-      name: string
-  }
-}
+  // data: {
+    userId: string,
+    // name: string
+    token: string;
+  // };
+};
