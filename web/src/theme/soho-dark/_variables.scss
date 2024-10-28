@@ -2,7 +2,8 @@ $primaryColor: #b19df7 !default;
 $primaryLightColor: scale-color($primaryColor, $lightness: 60%) !default;
 $primaryDarkColor: scale-color($primaryColor, $lightness: -5%) !default;
 $primaryDarkerColor: scale-color($primaryColor, $lightness: -10%) !default;
-$primaryTextColor: hsl(234, 15%, 13%) !default;
+// $primaryTextColor: hsl(234, 15%, 13%) !default;
+$primaryTextColor: #fff !default;
 
 $highlightBg: rgba(177, 157, 247, 0.16) !default;
 $highlightTextColor: $primaryColor !default;
@@ -955,4 +956,5 @@ $imagePreviewActionIconBorderRadius: 50% !default;
 	--highlight-bg: #{$highlightBg};
 	--highlight-text-color: #{$highlightTextColor};
 	color-scheme: dark;
+  --primary-theme-color: #{$highlightBg};
 }
