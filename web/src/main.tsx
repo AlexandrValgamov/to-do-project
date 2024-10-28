@@ -1,4 +1,4 @@
-import "./theme/theme.scss";
+import "./theme/soho/soho-dark/theme.scss";
 import "./assets/css/global.scss";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
