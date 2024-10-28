@@ -2,6 +2,7 @@ import { User } from '../models/user.js';
 import bcrypt from 'bcrypt';
 import mongoose from 'mongoose';
 import { generateToken } from '../utils/jwt.js';
+import { UnauthorizedError } from '../errors/unauthorized.js';
 
 export const createUser = async (req, res, next) => {
   const { name, password } = req.body;
@@ -24,16 +25,20 @@ export const login = async (req, res, next) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email }).select('+password').orFail();
     const matched = await bcrypt.compare(String(password), user.password);
+    console.log(email, password);
     if (!matched) {
-      throw new Error('Неправильные почта или пароль');
+      throw new UnauthorizedError('Неправильные почта или пароль');
     }
     const token = generateToken({ _id: user._id });
     console.log('token', token);
 
-    res.send({ token });
+    res.send({ token, userId: user._id });
   } catch (error) {
-    if (error instanceof mongoose.Error.DocumentNotFoundError) {
-      return next(new Error('Неправильные почта или пароль'));
+    if (
+      error instanceof mongoose.Error.DocumentNotFoundError ||
+      error instanceof UnauthorizedError
+    ) {
+      return res.status(401).send({ message: 'Неправильные почта или пароль' });
     }
     next(error);
   }
