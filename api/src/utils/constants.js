@@ -6,5 +6,5 @@ export const MONGO_DUPLACATE_ERROR_CODE = 11000;
 export const regex =
   /https?:\/\/(www\.)?[\w-]+\.[a-zA-Z\d._~:?#[\]/@!$&'()*+,;=-]{2,}#?/;
 
-export const allowedCors = ['http://localhost:5173'];
+export const allowedCors = ['http://localhost:3000'];
 export const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
