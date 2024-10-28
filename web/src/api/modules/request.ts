@@ -25,8 +25,13 @@ export default class ApiRequest {
     return newData;
   }
 
+  async createUser(data: TLoginRequest): Promise<TResponseUserData> {
+    const { data: newData } = await this.axios.post("/signup", data);
+    return newData;
+  }
+
   async login(data: TLoginRequest): Promise<TResponseUserData> {
-    const { data: newData } = await this.axios.post("/auth/login", data);
+    const { data: newData } = await this.axios.post("/signin", data);
     return newData;
   }
 }

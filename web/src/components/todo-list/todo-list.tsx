@@ -29,7 +29,7 @@ export const TodoList = () => {
   const { setTodos, setTodosLoading } = todosActions;
   const dispatch = useAppDispatch();
 
-  const userData = useAppSelector((state) => state.userSlice.userData);
+  const userId = localStorage.getItem("userId");
   const { todosData, isLoading } = useAppSelector((state) => state.todosSlice);
 
   const fetchTodos = async (id: string) => {
@@ -38,13 +38,13 @@ export const TodoList = () => {
   };
 
   useEffect(() => {
-    if (userData?._id) {
+    if (userId) {
       dispatch(setTodosLoading(true));
-      fetchTodos(userData?._id).finally(() => {
+      fetchTodos(userId).finally(() => {
         dispatch(setTodosLoading(false));
       });
     }
-  }, [userData]);
+  }, []);
 
   if (!isLoading)
     return (

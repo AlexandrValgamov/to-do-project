@@ -4,8 +4,9 @@ import api from "@/api";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { userActions } from "@/store/slices/user/user.slice";
-import { FormInput } from "@/components/form-input";
-import { FormButton } from "@/components/form-button";
+import { FormInput } from "@/components/form-input/form-input";
+import { FormButton } from "@/components/form-button/form-button";
+import { Link } from "react-router-dom";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -13,18 +14,24 @@ export const Login = () => {
   const { setIsAuth } = userActions;
   const isAuth = useAppSelector((state) => state.userSlice.isAuth);
 
+  document.title = "Login";
+
   const formik = useFormik({
     initialValues: {
       username: "",
       password: "",
     },
     onSubmit: (values) => {
+      console.log("values", values);
+
       api.ApiRequest.login({
         username: values.username,
         password: values.password,
       })
         .then((data) => {
-          console.log("response", data);
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("userId", data.userId);
+
           dispatch(setIsAuth(true));
           navigate("/", { replace: true });
         })
@@ -37,9 +44,9 @@ export const Login = () => {
   return isAuth ? (
     <Navigate to="/" replace />
   ) : (
-    <div>
-      <h2 className={style.loginTitle}>Вход</h2>
-      <form className={style.form} onSubmit={formik.handleSubmit}>
+    <div className={style.login}>
+      <h2 className={style.login__title}>Вход</h2>
+      <form className={style.login__form} onSubmit={formik.handleSubmit}>
         <FormInput
           value={formik.values.username}
           onChange={formik.handleChange}
@@ -56,6 +63,7 @@ export const Login = () => {
         />
         <FormButton label="Войти" type="submit" />
       </form>
+      <Link className={style.login__link} to="/auth/signup">регистрация</Link>
     </div>
   );
 };

@@ -18,17 +18,17 @@
     font-family: Inter;
     text-decoration: none;
   }
+}
 
-  &__form {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    gap: 1rem;
-    justify-content: center;
-    align-items: center;
+.login__form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
 
-    @media (max-width: $xs576) {
-      padding: 1rem;
-    }
+  @media (max-width: $xs576) {
+    padding: 1rem;
   }
 }
