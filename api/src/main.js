@@ -16,7 +16,7 @@ console.log('Loaded environment variables:', process.env.MONGO_URL);
 const app = express();
 
 const { PORT, MONGO_URL = '' } = process.env;
-console.log(MONGO_URL);
+console.log(`💾 DataBase ${MONGO_URL}`);
 
 mongoose.connect(MONGO_URL);
 app.use(express.json());
