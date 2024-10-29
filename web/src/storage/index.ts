@@ -6,7 +6,8 @@ export class Storage {
   }
 
   public getUserData() {
-    return JSON.parse(localStorage.getItem("userData") || "{}");
+    const userData = localStorage.getItem("userData");
+    return userData ? JSON.parse(userData) : null;
   }
 
   public removeUserData() {

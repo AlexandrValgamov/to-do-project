@@ -11,11 +11,11 @@ export default class ApiRequest {
   }
 
   async getUserData(): Promise<TResponseUserData> {
-    const { data } = await this.axios.get("/users/66c33c4a6e7517bea84eff5b");
+    const { data } = await this.axios.get("/users");
     return data;
   }
 
-  async getTodosByUSerId(userId: string): Promise<TResponseTodosData> {
+  async getTodosByUserId(userId: string): Promise<TResponseTodosData> {
     const { data } = await this.axios.get(`/todos/${userId}`);
     return data;
   }

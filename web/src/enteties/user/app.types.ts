@@ -1,9 +1,9 @@
 export type TAppUserData = {
-  _id: string,
-  name: string
+  userId: string;
+  token: string;
 }
 
 export type TLoginRequest = {
-  username: string,
+  email: string,
   password: string
 }
