@@ -8,6 +8,5 @@ interface ProtectedRouteProps {
 
 export const ProtectedRoute: FC<ProtectedRouteProps> = ({ children }) => {
   const isAuth = useAppSelector((state) => state.userSlice.isAuth);
-
   return isAuth ? children : <Navigate to="/auth/signin" replace />;
 };

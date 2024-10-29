@@ -6,9 +6,9 @@ import { storage } from "@/storage";
 const userDataInStore = storage.getUserData();
 
 const initialState: IUserState = {
-  isAuth: !!userDataInStore.userData,
-  userData: userDataInStore.userData
-    ? mapUserData(userDataInStore.userData)
+  isAuth: !!userDataInStore?.token,
+  userData: userDataInStore?.token
+    ? mapUserData(userDataInStore)
     : null,
 };
 
