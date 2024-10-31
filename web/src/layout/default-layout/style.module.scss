@@ -5,6 +5,7 @@
 
 .defaultLayoutHeader {
   display: flex;
+  justify-content: flex-end;
   height: 4rem;
   width: 100%;
   background-color: var(--theme-main-primaryColor);

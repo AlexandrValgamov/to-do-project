@@ -23,8 +23,6 @@ export const Login = () => {
       password: "",
     },
     onSubmit: (values) => {
-      console.log("values", values);
-
       api.ApiRequest.login({
         email: values.email,
         password: values.password,

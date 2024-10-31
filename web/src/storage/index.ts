@@ -1,11 +1,12 @@
 import { TResponseUserData } from "@/enteties/user/api.types";
+import { TAppUserData } from "@/enteties/user/app.types";
 
 export class Storage {
   public setUserData(userData: TResponseUserData) {
     localStorage.setItem("userData", JSON.stringify(userData));
   }
 
-  public getUserData() {
+  public getUserData(): TAppUserData {
     const userData = localStorage.getItem("userData");
     return userData ? JSON.parse(userData) : null;
   }

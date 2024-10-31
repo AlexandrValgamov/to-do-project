@@ -8,9 +8,11 @@ import api from "@/api";
 import { useAppDispatch } from "@/store/hooks";
 import { todosActions } from "@/store/slices/todos/todos.slice";
 import { SelectButton } from "primereact/selectbutton";
+import { storage } from "@/storage";
 
 export const Form = () => {
-  const userId = localStorage.getItem("userId");
+  const userData = storage.getUserData();
+
   const dispatch = useAppDispatch();
   const { addTodo } = todosActions;
 
@@ -24,7 +26,7 @@ export const Form = () => {
       console.log("values", values);
       api.ApiRequest.createTodo({
         ...values,
-        userId: userId || "",
+        userId: userData.userId || "",
       }).then((res) => {
         dispatch(addTodo({ data: res.data }));
       });
