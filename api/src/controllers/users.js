@@ -29,6 +29,7 @@ export const createUser = async (req, res, next) => {
     const token = generateToken({ _id: user._id });
 
     res.status(201).send({
+      email,
       userId: user._id,
       token,
     });
@@ -55,7 +56,7 @@ export const login = async (req, res, next) => {
 
     const token = generateToken({ _id: user._id });
 
-    res.send({ token, userId: user._id });
+    res.send({ email, token, userId: user._id });
   } catch (error) {
     if (error instanceof mongoose.Error.DocumentNotFoundError) {
       return next(new ForbiddenError('Неправильные почта или пароль'));
