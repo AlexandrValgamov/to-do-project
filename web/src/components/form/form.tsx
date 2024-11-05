@@ -9,7 +9,8 @@ import { useAppDispatch } from "@/store/hooks";
 import { todosActions } from "@/store/slices/todos/todos.slice";
 import { storage } from "@/storage";
 import { Card } from "primereact/card";
-import { CustomCalendar } from "../custom-calendar/CustomCalendar";
+import { CustomCalendarButton } from "../custom-calendar-button/CustomCalendarButton";
+import { schemaTodoForm, TSchemaTodoForm } from "./schema/schema";
 
 export const Form = () => {
   const userData = storage.getUserData();
@@ -17,12 +18,15 @@ export const Form = () => {
   const dispatch = useAppDispatch();
   const { addTodo } = todosActions;
 
-  const formik = useFormik({
+  const formik = useFormik<TSchemaTodoForm>({
     initialValues: {
-      title: "",
+      title: undefined,
       description: "",
-      priority: "medium",
+      date: undefined,
+      tags: [],
+      priority: 1,
     },
+    validationSchema: schemaTodoForm,
     onSubmit: (values) => {
       console.log("values", values);
       api.ApiRequest.createTodo({
@@ -65,11 +69,12 @@ export const Form = () => {
           />
         </div>
         <div className={style.formButtons}>
-          <CustomCalendar
+          <CustomCalendarButton
+            value={formik.values.date}
+            setValue={(value: Date | null) => formik.setFieldValue("date", value)}
             classname={style.formButton}
           />
           <Button
-            aria-label="submit"
             label="Приоритет"
             outlined
             size="small"
@@ -86,7 +91,7 @@ export const Form = () => {
         </div>
         <div className={style.submitGroup}>
           <Button label="Отмена" severity="warning" />
-          <Button label="Добавить задачу" severity="success" />
+          <Button type="submit" label="Добавить задачу" severity="success" />
         </div>
       </form>
     </Card>

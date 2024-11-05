@@ -1,0 +1,20 @@
+.overlayContent {
+  padding: 0;
+}
+
+.customCalendar {
+  &__panel {
+    padding: 0;
+    border: 0;
+  }
+
+  &__dayLabel {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+.buttonIcon {
+  margin-left: 0.5rem;
+  padding: 0;
+}
