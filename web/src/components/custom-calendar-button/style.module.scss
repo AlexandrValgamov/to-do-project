@@ -1,16 +1,3 @@
-.overlayPanel {
-  margin-top: 0.2rem;
-
-  &::before,
-  &::after {
-    display: none !important;
-  }
-
-  &__content {
-    padding: 0;
-  }
-}
-
 .customCalendar {
   &__panel {
     padding: 0;

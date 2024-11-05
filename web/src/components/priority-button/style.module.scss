@@ -1,13 +1,20 @@
-.overlayPanel {
-  margin-top: 0.2rem;
+.option {
+  display: flex;
+  align-items: center;
 
-  &::before,
-  &::after {
-    display: none !important;
-  }
-
-  &__content {
-    padding: 0;
+  &__icon {
+    &_p0 {
+      color: var(--todo-p0-color);
+    }
+    &_p1 {
+      color: var(--todo-p1-color);
+    }
+    &_p2 {
+      color: var(--todo-p2-color);
+    }
+    &_p3 {
+      color: var(--todo-p3-color);
+    }
   }
 }
 
