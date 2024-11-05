@@ -18,7 +18,9 @@ export const Main = () => {
   const userDataInStore = storage.getUserData();
 
   const fetchUser = async () => {
-    const response = await api.ApiRequest.getTodosByUserId(userDataInStore.userId);
+    const response = await api.ApiRequest.getTodosByUserId(
+      userDataInStore.userId
+    );
     const mapData = mapTodosData(response);
     dispatch(setUser(mapData));
     dispatch(setIsAuth(true));

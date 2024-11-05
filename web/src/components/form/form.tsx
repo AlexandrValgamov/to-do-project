@@ -7,8 +7,9 @@ import { InputTextarea } from "primereact/inputtextarea";
 import api from "@/api";
 import { useAppDispatch } from "@/store/hooks";
 import { todosActions } from "@/store/slices/todos/todos.slice";
-import { SelectButton } from "primereact/selectbutton";
 import { storage } from "@/storage";
+import { Card } from "primereact/card";
+import { CustomCalendar } from "../custom-calendar/CustomCalendar";
 
 export const Form = () => {
   const userData = storage.getUserData();
@@ -33,23 +34,16 @@ export const Form = () => {
     },
   });
 
-  const justifyOptions = [
-    {
-      icon: "pi pi-angle-double-up",
-      value: "highest",
-      color: "var(--theme-accent-100)",
-    },
-    { icon: "pi pi-angle-up", value: "high", color: "var(--theme-accent-60)" },
-    { icon: "pi pi-equals", value: "medium", color: "var(--theme-orange-100)" },
-    { icon: "pi pi-minus", value: "low", color: "var(--theme-green-100)" },
-  ];
-
-  const justifyTemplate = (option: (typeof justifyOptions)[number]) => {
-    return <i className={option.icon} style={{ color: option.color }}></i>;
-  };
-
   return (
-    <div>
+    <Card
+      pt={{
+        content: {
+          style: {
+            padding: 0,
+          },
+        },
+      }}
+    >
       <form className={style.form} onSubmit={formik.handleSubmit}>
         <div className={style.formInputs}>
           <InputText
@@ -65,28 +59,36 @@ export const Form = () => {
             placeholder="Описание..."
             autoResize
             value={formik.values.description}
-            rows={2}
+            rows={1}
             cols={80}
             onChange={formik.handleChange}
           />
-          <SelectButton
-            id="priority"
-            value={formik.values.priority}
-            onChange={formik.handleChange}
-            itemTemplate={justifyTemplate}
-            optionLabel="value"
-            options={justifyOptions}
-          />
         </div>
         <div className={style.formButtons}>
+          <CustomCalendar
+            classname={style.formButton}
+          />
           <Button
             aria-label="submit"
-            icon="pi pi-check"
-            type="submit"
-            severity="success"
+            label="Приоритет"
+            outlined
+            size="small"
+            icon="pi pi-flag"
+            className={style.formButton}
+          />
+          <Button
+            label="Метки"
+            outlined
+            size="small"
+            icon="pi pi-tag"
+            className={style.formButton}
           />
         </div>
+        <div className={style.submitGroup}>
+          <Button label="Отмена" severity="warning" />
+          <Button label="Добавить задачу" severity="success" />
+        </div>
       </form>
-    </div>
+    </Card>
   );
 };

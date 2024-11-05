@@ -4210,7 +4210,7 @@ primeicons@^7.0.0:
   resolved "https://registry.yarnpkg.com/primeicons/-/primeicons-7.0.0.tgz#6b25c3fdcb29bb745a3035bdc1ed5902f4a419cf"
   integrity sha512-jK3Et9UzwzTsd6tzl2RmwrVY/b8raJ3QZLzoDACj+oTJ0oX7L9Hy+XnVwgo4QVKlKpnP/Ur13SXV/pVh4LzaDw==
 
-primelocale@^1.0.2:
+primelocale@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/primelocale/-/primelocale-1.0.4.tgz#7a06d51b71ed6b308828d108df4ab293fe0d6b8b"
   integrity sha512-98hx5Nwq7CusZnb2ToOLBsamroihcvCPwxK8CUOXMCwoL7nn5jwL7QdEQWzFuTkE3UAAgBWYQwi1eITtzpTulw==
