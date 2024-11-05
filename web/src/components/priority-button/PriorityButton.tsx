@@ -1,39 +1,43 @@
 import { Button } from "primereact/button";
-import { Calendar } from "primereact/calendar";
+import { ListBox } from "primereact/listbox";
 import { OverlayPanel } from "primereact/overlaypanel";
 import { FC, useRef } from "react";
 import style from "./style.module.scss";
-import { format } from "date-fns";
-import { ru } from "date-fns/locale";
 import classNames from "classnames";
 
-interface ICustomCalendarButton {
-  value?: Date | null;
-  setValue: (value: Date | null) => void;
+interface IPriorityButton {
   classname?: string;
+  value?: number | null;
+  setValue: (value: number | null) => void;
 }
 
-export const CustomCalendarButton: FC<ICustomCalendarButton> = ({
-  setValue,
-  value,
+export const PriorityButton: FC<IPriorityButton> = ({
   classname,
+  value,
+  setValue,
 }) => {
   const op = useRef<OverlayPanel>(null);
-  const label = value
-    ? format(value, "d MMMM", { locale: ru })
-    : "Срок выполнения";
+  const options = [
+    { name: "Приоритет 1", code: 0 },
+    { name: "Приоритет 2", code: 1 },
+    { name: "Приоритет 3", code: 2 },
+    { name: "Приоритет 4", code: 3 },
+  ];
+  const label =
+    value !== null && value !== undefined ? options[value].name : "Приоритет";
+
   return (
     <>
       <Button
+        type="button"
         label={label}
         outlined
         size="small"
-        icon="pi pi-calendar-plus"
+        icon="pi pi-flag"
         className={classname}
         onClick={(e) => op.current?.toggle(e)}
-        type="button"
       >
-        {value && (
+        {value !== null && value !== undefined && (
           <i
             className={classNames(
               style.buttonIcon,
@@ -55,17 +59,17 @@ export const CustomCalendarButton: FC<ICustomCalendarButton> = ({
           },
         }}
       >
-        <Calendar
-          value={value ?? new Date()}
-          onChange={(e) => setValue(e.value || new Date())}
-          inline
-          className={style.customCalendar}
+        <ListBox
+          value={value !== null && value !== undefined && options[value]}
+          onChange={(e) => setValue(e.value.code)}
+          options={options}
+          optionLabel="name"
           pt={{
-            panel: {
-              className: style.customCalendar__panel,
+            item: {
+              className: style.listBox__item,
             },
-            dayLabel: {
-              className: style.customCalendar__dayLabel,
+            list: {
+              className: style.listBox__list,
             },
           }}
         />

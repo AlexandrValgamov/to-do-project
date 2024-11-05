@@ -15,10 +15,10 @@ export type TResponseTodosData = {
 
 export type TCreateTodoRequest = {
   userId: string;
-  title?: string;
+  title?: string | null;
   description: string;
-  date?: Date;
-  priority?: number;
+  date?: Date | null;
+  priority?: number | null;
   tags?: string[];
 }
 

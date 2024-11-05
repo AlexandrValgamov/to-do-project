@@ -11,6 +11,7 @@ import { storage } from "@/storage";
 import { Card } from "primereact/card";
 import { CustomCalendarButton } from "../custom-calendar-button/CustomCalendarButton";
 import { schemaTodoForm, TSchemaTodoForm } from "./schema/schema";
+import { PriorityButton } from "../priority-button/PriorityButton";
 
 export const Form = () => {
   const userData = storage.getUserData();
@@ -20,11 +21,11 @@ export const Form = () => {
 
   const formik = useFormik<TSchemaTodoForm>({
     initialValues: {
-      title: undefined,
+      title: "",
       description: "",
-      date: undefined,
+      date: null,
       tags: [],
-      priority: 1,
+      priority: null,
     },
     validationSchema: schemaTodoForm,
     onSubmit: (values) => {
@@ -55,7 +56,7 @@ export const Form = () => {
             type="text"
             className="p-inputtext-sm"
             placeholder="Заголовок"
-            onChange={formik.handleChange}
+            onChange={(e) => formik.setFieldValue("title", e.target.value)}
             value={formik.values.title}
           />
           <InputTextarea
@@ -63,25 +64,30 @@ export const Form = () => {
             placeholder="Описание..."
             autoResize
             value={formik.values.description}
+            onChange={(e) =>
+              formik.setFieldValue("description", e.target.value)
+            }
             rows={1}
             cols={80}
-            onChange={formik.handleChange}
           />
         </div>
         <div className={style.formButtons}>
           <CustomCalendarButton
             value={formik.values.date}
-            setValue={(value: Date | null) => formik.setFieldValue("date", value)}
+            setValue={(value: Date | null) =>
+              formik.setFieldValue("date", value)
+            }
             classname={style.formButton}
           />
-          <Button
-            label="Приоритет"
-            outlined
-            size="small"
-            icon="pi pi-flag"
-            className={style.formButton}
+          <PriorityButton
+            classname={style.formButton}
+            value={formik.values.priority}
+            setValue={(value: number | null) =>
+              formik.setFieldValue("priority", value)
+            }
           />
           <Button
+            type="button"
             label="Метки"
             outlined
             size="small"
@@ -90,7 +96,12 @@ export const Form = () => {
           />
         </div>
         <div className={style.submitGroup}>
-          <Button label="Отмена" severity="warning" />
+          <Button
+            type="button"
+            label="Отмена"
+            severity="danger"
+            onClick={() => formik.resetForm()}
+          />
           <Button type="submit" label="Добавить задачу" severity="success" />
         </div>
       </form>

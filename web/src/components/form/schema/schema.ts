@@ -2,7 +2,7 @@ import { array, date, InferType, number, object, string } from "yup";
 
 export const schemaTodoForm = object({
   title: string()
-  .optional()
+  .nullable()
   .max(150, "Заголовок не может содержать более 150 символов"),
 
 description: string()
@@ -11,12 +11,12 @@ description: string()
   .max(200, "Описание не может содержать более 200 символов"),
 
 date: date()
-  .optional(),
+  .nullable(),
 
 priority: number()
-  .required("Приоритет обязателен")
-  .min(1, "Минимальный приоритет — 1")
-  .max(4, "Максимальный приоритет — 4"),
+  .nullable()
+  .min(0, "Минимальный приоритет — 0")
+  .max(3, "Максимальный приоритет — 3"),
 
 tags: array()
   .of(string().required().max(20, "Тег не может содержать более 20 символов"))
