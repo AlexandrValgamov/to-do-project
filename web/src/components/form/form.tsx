@@ -7,47 +7,48 @@ import { InputTextarea } from "primereact/inputtextarea";
 import api from "@/api";
 import { useAppDispatch } from "@/store/hooks";
 import { todosActions } from "@/store/slices/todos/todos.slice";
-import { SelectButton } from "primereact/selectbutton";
+import { storage } from "@/storage";
+import { Card } from "primereact/card";
+import { CustomCalendarButton } from "../custom-calendar-button/CustomCalendarButton";
+import { schemaTodoForm, TSchemaTodoForm } from "./schema/schema";
+import { PriorityButton } from "../priority-button/PriorityButton";
 
 export const Form = () => {
-  const userId = localStorage.getItem("userId");
+  const userData = storage.getUserData();
+
   const dispatch = useAppDispatch();
   const { addTodo } = todosActions;
 
-  const formik = useFormik({
+  const formik = useFormik<TSchemaTodoForm>({
     initialValues: {
-      title: "",
+      title: null,
       description: "",
-      priority: "medium",
+      date: null,
+      tags: [],
+      priority: null,
     },
+    validationSchema: schemaTodoForm,
     onSubmit: (values) => {
       console.log("values", values);
       api.ApiRequest.createTodo({
         ...values,
-        userId: userId || "",
+        userId: userData.userId || "",
       }).then((res) => {
         dispatch(addTodo({ data: res.data }));
       });
     },
   });
 
-  const justifyOptions = [
-    {
-      icon: "pi pi-angle-double-up",
-      value: "highest",
-      color: "var(--theme-accent-100)",
-    },
-    { icon: "pi pi-angle-up", value: "high", color: "var(--theme-accent-60)" },
-    { icon: "pi pi-equals", value: "medium", color: "var(--theme-orange-100)" },
-    { icon: "pi pi-minus", value: "low", color: "var(--theme-green-100)" },
-  ];
-
-  const justifyTemplate = (option: (typeof justifyOptions)[number]) => {
-    return <i className={option.icon} style={{ color: option.color }}></i>;
-  };
-
   return (
-    <div>
+    <Card
+      pt={{
+        content: {
+          style: {
+            padding: 0,
+          },
+        },
+      }}
+    >
       <form className={style.form} onSubmit={formik.handleSubmit}>
         <div className={style.formInputs}>
           <InputText
@@ -55,36 +56,57 @@ export const Form = () => {
             type="text"
             className="p-inputtext-sm"
             placeholder="Заголовок"
-            onChange={formik.handleChange}
-            value={formik.values.title}
+            onChange={(e) => formik.setFieldValue("title", e.target.value)}
+            value={formik.values.title ?? ""}
           />
           <InputTextarea
             id="description"
             placeholder="Описание..."
             autoResize
             value={formik.values.description}
-            rows={2}
+            onChange={(e) =>
+              formik.setFieldValue("description", e.target.value)
+            }
+            rows={1}
             cols={80}
-            onChange={formik.handleChange}
-          />
-          <SelectButton
-            id="priority"
-            value={formik.values.priority}
-            onChange={formik.handleChange}
-            itemTemplate={justifyTemplate}
-            optionLabel="value"
-            options={justifyOptions}
           />
         </div>
         <div className={style.formButtons}>
+          <CustomCalendarButton
+            value={formik.values.date}
+            setValue={(value: Date | null) =>
+              formik.setFieldValue("date", value)
+            }
+          />
+          <PriorityButton
+            value={formik.values.priority}
+            setValue={(value: number | null) =>
+              formik.setFieldValue("priority", value)
+            }
+          />
           <Button
-            aria-label="submit"
-            icon="pi pi-check"
-            type="submit"
-            severity="success"
+            type="button"
+            label="Метки"
+            outlined
+            size="small"
+            icon="pi pi-tag"
+            disabled
+            style={{
+              padding: "0.3rem",
+              fontWeight: "400",
+            }}
           />
         </div>
+        <div className={style.submitGroup}>
+          <Button
+            type="button"
+            label="Отмена"
+            severity="danger"
+            onClick={() => formik.resetForm()}
+          />
+          <Button type="submit" label="Добавить задачу" severity="success" />
+        </div>
       </form>
-    </div>
+    </Card>
   );
 };

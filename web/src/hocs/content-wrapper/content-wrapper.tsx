@@ -6,5 +6,5 @@ interface IContentWrapperProps {
 }
 
 export const ContentWrapper: FC<IContentWrapperProps> = ({ children }) => {
-  return <div className={style.contebtWrapper}>{children}</div>;
+  return <div className={style.contentWrapper}>{children}</div>;
 };

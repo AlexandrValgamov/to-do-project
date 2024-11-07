@@ -33,7 +33,7 @@ export const TodoList = () => {
   const { todosData, isLoading } = useAppSelector((state) => state.todosSlice);
 
   const fetchTodos = async (id: string) => {
-    const response = await api.ApiRequest.getTodosByUSerId(id);
+    const response = await api.ApiRequest.getTodosByUserId(id);
     dispatch(setTodos(response));
   };
 
