@@ -47,8 +47,7 @@ export const TodoItem: FC<TodoItemProps> = ({
           className={`custom-target-icon pi pi-${priorityData.icon}`}
           style={{ color: priorityData.color, cursor: "pointer" }}
           data-pr-tooltip={priority}
-          data-pr-position="right"
-          // data-pr-at="right+5 bottom"
+          data-pr-position="bottom"
         />
         <p className={style.todoItemText}>{description}</p>
       </div>

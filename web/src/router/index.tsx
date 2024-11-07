@@ -1,19 +1,16 @@
 import { DefaultLayout, ExternalLayout } from "@/layout";
 import { ErrorPage, Login, Main, Register } from "@/pages";
-import { createBrowserRouter, Navigate,  } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 
 const routes = [
   {
     path: "/",
     element: <DefaultLayout />,
+    errorElement: <ErrorPage code={404} message="Страница не найдена" />,
     children: [
       {
-        path: `/`,
+        path: "",
         element: <Main />,
-      },
-      {
-        path: `*`,
-        element: <ErrorPage code={404} message="Страница не найдена" />,
       },
     ],
   },
@@ -22,16 +19,16 @@ const routes = [
     element: <ExternalLayout />,
     children: [
       {
-        path: `/auth/signin`,
+        path: "signin",
         element: <Login />,
       },
       {
-        path: `/auth/signup`,
+        path: "signup",
         element: <Register />,
       },
       {
         path: `*`,
-        element: <Navigate to={`/auth/signin`} replace={true} />,
+        element: <Navigate to={"signin"} replace={true} />,
       },
     ],
   },

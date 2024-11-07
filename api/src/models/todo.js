@@ -9,21 +9,14 @@ const todoSchema = new mongoose.Schema(
     },
     title: {
       type: String,
-      required: [true, 'Поле "title" должно быть заполнено'],
     },
     description: {
       type: String,
       required: [true, 'Поле "description" должно быть заполнено'],
     },
     priority: {
-      type: String,
-      enum: ['low', 'medium', 'high', 'highest'],
+      type: Number,
       required: [true, 'Поле "priority" должно быть заполнено'],
-    },
-    state: {
-      type: String,
-      enum: ['todo', 'in-progress', 'done'],
-      // required: [true, 'Поле "state" должно быть заполнено'],
     },
     createdAt: {
       type: Date,

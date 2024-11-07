@@ -7,6 +7,7 @@ import { userActions } from "@/store/slices/user/user.slice";
 import { FormInput } from "@/components/form-input/form-input";
 import { FormButton } from "@/components/form-button/form-button";
 import { Link } from "react-router-dom";
+import { storage } from "@/storage";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -18,20 +19,16 @@ export const Login = () => {
 
   const formik = useFormik({
     initialValues: {
-      username: "",
+      email: "",
       password: "",
     },
     onSubmit: (values) => {
-      console.log("values", values);
-
       api.ApiRequest.login({
-        username: values.username,
+        email: values.email,
         password: values.password,
       })
         .then((data) => {
-          localStorage.setItem("token", data.token);
-          localStorage.setItem("userId", data.userId);
-
+          storage.setUserData(data);
           dispatch(setIsAuth(true));
           navigate("/", { replace: true });
         })
@@ -48,11 +45,11 @@ export const Login = () => {
       <h2 className={style.login__title}>Вход</h2>
       <form className={style.login__form} onSubmit={formik.handleSubmit}>
         <FormInput
-          value={formik.values.username}
+          value={formik.values.email}
           onChange={formik.handleChange}
-          id="username"
-          type="text"
-          label="Логин"
+          id="email"
+          type="email"
+          label="Email"
         />
         <FormInput
           value={formik.values.password}
@@ -62,8 +59,10 @@ export const Login = () => {
           label="Пароль"
         />
         <FormButton label="Войти" type="submit" />
+        <Link className={style.login__link} to="/auth/signup">
+          регистрация
+        </Link>
       </form>
-      <Link className={style.login__link} to="/auth/signup">регистрация</Link>
     </div>
   );
 };

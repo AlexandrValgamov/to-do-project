@@ -1,0 +1,21 @@
+.customCalendar {
+  &__panel {
+    padding: 0;
+    border: 0;
+  }
+
+  &__dayLabel {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+.button {
+  padding: 0.3rem;
+  font-weight: 400;
+}
+
+.buttonIcon {
+  margin-left: 0.5rem;
+  padding: 0;
+}
