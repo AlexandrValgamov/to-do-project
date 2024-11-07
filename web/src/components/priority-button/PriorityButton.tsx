@@ -4,19 +4,14 @@ import { OverlayPanel } from "primereact/overlaypanel";
 import { FC, useRef } from "react";
 import style from "./style.module.scss";
 import classNames from "classnames";
-import { CustomOverlayPanel } from "../custom-overlay-panel/customOverlayPanel";
+import { CustomOverlayPanel } from "../custom-overlay-panel/CustomOverlayPanel";
 
 interface IPriorityButton {
-  classname?: string;
-  value?: number | null;
+  value: number | null;
   setValue: (value: number | null) => void;
 }
 
-export const PriorityButton: FC<IPriorityButton> = ({
-  classname,
-  value,
-  setValue,
-}) => {
+export const PriorityButton: FC<IPriorityButton> = ({ value, setValue }) => {
   const op = useRef<OverlayPanel>(null);
   const options = [
     { name: "Приоритет 1", code: 0 },
@@ -31,10 +26,7 @@ export const PriorityButton: FC<IPriorityButton> = ({
     return (
       <div className={style.option}>
         <i
-          className={classNames(
-            `pi pi-flag`,
-            style[`option__icon_p${option.code}`]
-          )}
+          className={classNames(`pi pi-flag`, style[`button_p${option.code}`])}
           style={{ width: "1.25rem", marginRight: ".5rem" }}
         />
         <div>{option.name}</div>
@@ -50,20 +42,18 @@ export const PriorityButton: FC<IPriorityButton> = ({
         outlined
         size="small"
         icon={"pi pi-flag"}
-        className={classNames(classname, {
-          [style[`option__icon_p${value}`]]:
-            value !== null && value !== undefined,
+        className={classNames(style.button, "p-button", {
+          [style[`button_p${value}`]]: value !== null,
         })}
         onClick={(e) => op.current?.toggle(e)}
       >
-        {value !== null && value !== undefined && (
+        {value !== null && (
           <i
             className={classNames(
-              style.buttonIcon,
-              "pi pi-times-circle p-button",
+              style.button__icon,
+              `pi pi-times-circle p-button`,
               {
-                [style[`option__icon_p${value}`]]:
-                  value !== null && value !== undefined,
+                [style[`button__icon_p${value}`]]: value !== null,
               }
             )}
             onClick={(e) => {
@@ -75,7 +65,7 @@ export const PriorityButton: FC<IPriorityButton> = ({
       </Button>
       <CustomOverlayPanel overlayPanelRef={op}>
         <ListBox
-          value={value !== null && value !== undefined && options[value]}
+          value={value !== null && options[value]}
           onChange={(e) => setValue(e.value.code)}
           options={options}
           optionLabel="name"

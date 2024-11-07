@@ -6,18 +6,16 @@ import style from "./style.module.scss";
 import { format } from "date-fns";
 import { ru } from "date-fns/locale";
 import classNames from "classnames";
-import { CustomOverlayPanel } from "../custom-overlay-panel/customOverlayPanel";
+import { CustomOverlayPanel } from "../custom-overlay-panel/CustomOverlayPanel";
 
 interface ICustomCalendarButton {
   value?: Date | null;
   setValue: (value: Date | null) => void;
-  classname?: string;
 }
 
 export const CustomCalendarButton: FC<ICustomCalendarButton> = ({
   setValue,
   value,
-  classname,
 }) => {
   const op = useRef<OverlayPanel>(null);
   const label = value
@@ -30,7 +28,7 @@ export const CustomCalendarButton: FC<ICustomCalendarButton> = ({
         outlined
         size="small"
         icon="pi pi-calendar-plus"
-        className={classname}
+        className={style.button}
         onClick={(e) => op.current?.toggle(e)}
         type="button"
       >

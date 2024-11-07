@@ -21,7 +21,7 @@ export const Form = () => {
 
   const formik = useFormik<TSchemaTodoForm>({
     initialValues: {
-      title: "",
+      title: null,
       description: "",
       date: null,
       tags: [],
@@ -57,7 +57,7 @@ export const Form = () => {
             className="p-inputtext-sm"
             placeholder="Заголовок"
             onChange={(e) => formik.setFieldValue("title", e.target.value)}
-            value={formik.values.title}
+            value={formik.values.title ?? ""}
           />
           <InputTextarea
             id="description"
@@ -77,10 +77,8 @@ export const Form = () => {
             setValue={(value: Date | null) =>
               formik.setFieldValue("date", value)
             }
-            classname={style.formButton}
           />
           <PriorityButton
-            classname={style.formButton}
             value={formik.values.priority}
             setValue={(value: number | null) =>
               formik.setFieldValue("priority", value)
@@ -92,7 +90,11 @@ export const Form = () => {
             outlined
             size="small"
             icon="pi pi-tag"
-            className={style.formButton}
+            disabled
+            style={{
+              padding: "0.3rem",
+              fontWeight: "400",
+            }}
           />
         </div>
         <div className={style.submitGroup}>

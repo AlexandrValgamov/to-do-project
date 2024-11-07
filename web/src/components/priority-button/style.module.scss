@@ -1,26 +1,61 @@
 .option {
   display: flex;
   align-items: center;
-
-  &__icon {
-    &_p0 {
-      color: var(--todo-p0-color);
-    }
-    &_p1 {
-      color: var(--todo-p1-color);
-    }
-    &_p2 {
-      color: var(--todo-p2-color);
-    }
-    &_p3 {
-      color: var(--todo-p3-color);
-    }
-  }
 }
 
-.buttonIcon {
-  margin-left: 0.5rem;
-  padding: 0;
+.button {
+  padding: 0.3rem;
+  font-weight: 400;
+
+  &_p0 {
+    color: var(--todo-p0-color);
+  }
+  &_p1 {
+    color: var(--todo-p1-color);
+  }
+  &_p2 {
+    color: var(--todo-p2-color);
+  }
+  &_p3 {
+    color: var(--todo-p3-color);
+  }
+
+  &__icon {
+    margin-left: 0.5rem;
+    padding: 0;
+
+    &_p0 {
+      color: var(--todo-p0-color);
+
+      &:hover {
+        color: #fff;
+      }
+    }
+
+    &_p1 {
+      color: var(--todo-p1-color);
+
+      &:hover {
+        color: #fff;
+      }
+    }
+
+    &_p2 {
+      color: var(--todo-p2-color);
+
+      &:hover {
+        color: #fff;
+      }
+    }
+
+    &_p3 {
+      color: var(--todo-p3-color);
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
 }
 
 .listBox {

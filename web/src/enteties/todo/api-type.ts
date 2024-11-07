@@ -15,11 +15,11 @@ export type TResponseTodosData = {
 
 export type TCreateTodoRequest = {
   userId: string;
-  title?: string | null;
+  title: string | null;
   description: string;
-  date?: Date | null;
-  priority?: number | null;
-  tags?: string[];
+  date: Date | null;
+  priority: number | null;
+  tags: string[];
 }
 
 export type TCreateTodoResponse = {
