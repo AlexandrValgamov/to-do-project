@@ -4,9 +4,9 @@ type TTodoData = {
   title: string | null;
   description: string;
   priority: number | null;
-  targetDate: Date | null;
+  targetDate: string | null;
   tags: string[];
-  createdAt: Date;
+  createdAt: string;
 };
 
 export type TAppTodosData = TTodoData[];

@@ -9,9 +9,9 @@ export function mapTodosData(data: TResponseTodosData): TAppTodosData {
       title: item.title || null,
       description: item.description,
       priority: item.priority || null,
-      targetDate: item.targetDate ? new Date(item.targetDate) : null,
+      targetDate: item.targetDate ? item.targetDate : null,
       tags: item.tags || [],
-      createdAt: new Date(item.createdAt),
+      createdAt: item.createdAt,
     };
   }) : [];
 }
