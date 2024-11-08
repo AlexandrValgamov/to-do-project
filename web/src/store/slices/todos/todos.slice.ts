@@ -7,7 +7,7 @@ const initialState: ITodosState = {
   todosData: [],
   isLoading: false,
 };
-
+// TODO add delete todo method
 const todosSlice = createSlice({
   name: "todo",
   initialState,

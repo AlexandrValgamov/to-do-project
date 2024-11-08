@@ -12,6 +12,7 @@ import { Card } from "primereact/card";
 import { CustomCalendarButton } from "../custom-calendar-button/CustomCalendarButton";
 import { schemaTodoForm, TSchemaTodoForm } from "./schema/schema";
 import { PriorityButton } from "../priority-button/PriorityButton";
+import { mapAppToApiTodosData } from "@/enteties/todo/mapping.app-to-api";
 
 export const Form = () => {
   const userData = storage.getUserData();
@@ -23,17 +24,19 @@ export const Form = () => {
     initialValues: {
       title: null,
       description: "",
-      date: null,
+      targetDate: null,
       tags: [],
       priority: null,
     },
     validationSchema: schemaTodoForm,
     onSubmit: (values) => {
       console.log("values", values);
-      api.ApiRequest.createTodo({
-        ...values,
-        userId: userData.userId || "",
-      }).then((res) => {
+      api.ApiRequest.createTodo(
+        mapAppToApiTodosData({
+          ...values,
+          userId: userData.userId || "",
+        })
+      ).then((res) => {
         dispatch(addTodo({ data: res.data }));
       });
     },
@@ -73,9 +76,9 @@ export const Form = () => {
         </div>
         <div className={style.formButtons}>
           <CustomCalendarButton
-            value={formik.values.date}
+            value={formik.values.targetDate}
             setValue={(value: Date | null) =>
-              formik.setFieldValue("date", value)
+              formik.setFieldValue("targetDate", value)
             }
           />
           <PriorityButton

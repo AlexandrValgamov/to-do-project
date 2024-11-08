@@ -11,7 +11,7 @@ export const schemaTodoForm = object({
     .min(1, "Описание должно содержать минимум 1 символ")
     .max(200, "Описание не может содержать более 200 символов"),
 
-  date: date().required().nullable(),
+  targetDate: date().required().nullable(),
 
   priority: number()
     .required()
