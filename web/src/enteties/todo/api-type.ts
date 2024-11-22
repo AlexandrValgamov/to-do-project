@@ -7,6 +7,7 @@ export type TResponseTodoData = {
   priority?: number;
   tags?: string[];
   createdAt: string;
+  completed: boolean;
 };
 
 export type TResponseTodosData = {
@@ -20,6 +21,7 @@ export type TApiTodoRequest = {
   targetDate?: string;
   priority?: number;
   tags?: string[];
+  completed?: boolean;
 };
 
 export type TCreateTodoResponse = {

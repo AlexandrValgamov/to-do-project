@@ -44,6 +44,7 @@ export const Form = () => {
 
   return (
     <Card
+      className={style.wrapper}
       pt={{
         content: {
           style: {

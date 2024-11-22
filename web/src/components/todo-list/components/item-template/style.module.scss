@@ -1,0 +1,99 @@
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  width: 100%;
+
+  &:hover .item__buttons {
+    display: flex;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 30px);
+  }
+
+  &__header {
+    display: flex;
+    min-height: 20px;
+  }
+
+  &__title {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 1rem;
+    opacity: 0.7;
+  }
+
+  &__buttons {
+    display: none;
+    justify-content: end;
+    margin-left: auto;
+    gap: 0.5rem;
+    opacity: .8;
+  }
+
+  &__customButton {
+    padding: 0;
+    width: 20px;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  &__description {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 400;
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+    width: 100%;
+    min-height: 20px;
+  }
+
+  &__targetDate {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: end;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__targetDate_p3 {
+    color: var(--todo-p3-color);
+  }
+
+  &__targetDate_p2 {
+    color: var(--todo-p2-color);
+  }
+
+  &__targetDate_p1 {
+    color: var(--todo-p1-color);
+  }
+
+  &__targetDate_p0 {
+    color: var(--todo-p0-color);
+  }
+}
+
+.card {
+  &__body {
+    padding: 0;
+  }
+
+  &__content {
+    padding: 0;
+  }
+}

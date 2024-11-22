@@ -1,4 +1,4 @@
-type TTodoData = {
+export type TTodoData = {
   id: string;
   userId: string;
   title: string | null;
@@ -7,6 +7,7 @@ type TTodoData = {
   targetDate: string | null;
   tags: string[];
   createdAt: string;
+  completed: boolean;
 };
 
 export type TAppTodosData = TTodoData[];
@@ -18,4 +19,5 @@ export type TAppTodoRequest = {
   targetDate: Date | null;
   priority: number | null;
   tags: string[];
+  completed?: boolean;
 }

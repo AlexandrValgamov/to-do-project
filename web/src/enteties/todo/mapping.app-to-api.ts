@@ -7,7 +7,8 @@ export function mapAppToApiTodosData(data: TAppTodoRequest): TApiTodoRequest {
     description: data.description,
     ...(data.title ? { title: data.title } : {}),
     ...(data.tags.length > 0 ? { tags: data.tags } : {}),
-    ...(data.priority ? { priority: data.priority } : {}),
+    ...(data.priority !== null ? { priority: data.priority } : {}),
     ...(data.targetDate ? { targetDate: data.targetDate.toISOString() } : {}),
+    completed: data.completed ?? false,
   };
 }
