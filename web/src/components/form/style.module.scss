@@ -1,3 +1,6 @@
+.wrapper {
+  background-color: #282936cb;
+}
 .form {
   display: flex;
   flex-direction: column;
@@ -5,23 +8,20 @@
   align-items: stretch;
   background-color: var(--theme-main-primaryColor);
   border-radius: 1rem;
+  width: 100%;
 }
 
 .formInputs {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
+  width: 100%;
 }
 
 .formButtons {
   display: flex;
   gap: 0.5rem;
 }
-
-// .formButton {
-//   padding: 0.3rem;
-//   font-weight: 400;
-// }
 
 .submitGroup {
   display: flex;

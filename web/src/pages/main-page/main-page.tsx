@@ -10,6 +10,8 @@ import { useEffect } from "react";
 import locale_ru from "primelocale/ru.json";
 import { storage } from "@/storage";
 import { mapTodosData } from "@/enteties/todo/mapping.api-to-app";
+import { ExpiredTasks } from "@/components/expired-tasks/ExpiredTasks";
+import { CompletedTasks } from "@/components/completed-tasks/CompletedTasks";
 
 export const Main = () => {
   const { setUser, setIsAuth } = userActions;
@@ -34,10 +36,12 @@ export const Main = () => {
 
   return (
     <PageWrapper>
+      <ExpiredTasks />
       <ContentWrapper>
         <Form />
         <TodoList />
       </ContentWrapper>
+      <CompletedTasks />
     </PageWrapper>
   );
 };
