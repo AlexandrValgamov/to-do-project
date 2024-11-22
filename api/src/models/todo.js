@@ -14,18 +14,22 @@ const todoSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Поле "description" должно быть заполнено'],
     },
+    targetDate: {
+      type: String,
+    },
     priority: {
       type: Number,
-      required: [true, 'Поле "priority" должно быть заполнено'],
+    },
+    tags: {
+      type: [String],
     },
     createdAt: {
       type: Date,
       default: Date.now,
-      required: true,
     },
-    expiresIn: {
-      type: Date,
-      // required: [true, 'Поле "expiresIn" должно быть заполнено'],
+    completed: {
+      type: Boolean,
+      default: false,
     },
   },
   { versionKey: false },
