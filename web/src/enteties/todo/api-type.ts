@@ -28,3 +28,7 @@ export type TCreateTodoResponse = {
   message: string;
   data: TResponseTodoData[];
 };
+
+export type TDeleteTodoResponse = {
+  message: string;
+};

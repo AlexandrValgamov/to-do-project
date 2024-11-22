@@ -7,6 +7,9 @@ import { format } from "date-fns";
 import { Button } from "primereact/button";
 import { ru } from "date-fns/locale";
 import classNames from "classnames";
+import api from "@/api";
+import { dispatch } from "@/store/store";
+import { todosActions } from "@/store/slices/todos/todos.slice";
 
 interface IItemTemplateProps {
   item: TTodoData;
@@ -14,7 +17,12 @@ interface IItemTemplateProps {
 
 export const ItemTemplate: FC<IItemTemplateProps> = ({ item }) => {
   const [checked, setChecked] = useState(item.completed);
-  const onDelete = () => {};
+  const { deleteTodo } = todosActions;
+  const onDelete = () => {
+    api.ApiRequest.deleteTodo(item.id).then(() => {
+      dispatch(deleteTodo(item.id));
+    });
+  };
 
   return (
     <Card

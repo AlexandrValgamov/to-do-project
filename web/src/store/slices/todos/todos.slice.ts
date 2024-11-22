@@ -24,6 +24,12 @@ const todosSlice = createSlice({
     ) => {
       state.todosData = [...mapTodosData(payload), ...state.todosData];
     },
+    deleteTodo: (
+      state: Draft<ITodosState>,
+      { payload }: PayloadAction<string>
+    ) => {
+      state.todosData = state.todosData.filter((todo) => todo.id !== payload);
+    },
     setTodosLoading: (
       state: Draft<ITodosState>,
       { payload }: PayloadAction<boolean>
