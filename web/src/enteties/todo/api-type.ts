@@ -1,28 +1,34 @@
-type TTodoData = {
-  _id: string,
-  userId: string,
-  title?: string,
-  description: string,
-  date: string,
-  priority?: number,
-  tags?: string[],
-  createdAt: string,
-}
+export type TResponseTodoData = {
+  _id: string;
+  userId: string;
+  title?: string;
+  description: string;
+  targetDate?: string;
+  priority?: number;
+  tags?: string[];
+  createdAt: string;
+  completed: boolean;
+};
 
 export type TResponseTodosData = {
-  data: TTodoData[];
-}
+  data: TResponseTodoData[];
+};
 
-export type TCreateTodoRequest = {
+export type TApiTodoRequest = {
   userId: string;
-  title: string | null;
+  title?: string;
   description: string;
-  date: Date | null;
-  priority: number | null;
-  tags: string[];
-}
+  targetDate?: string;
+  priority?: number;
+  tags?: string[];
+  completed?: boolean;
+};
 
 export type TCreateTodoResponse = {
   message: string;
-  data: TTodoData[];
-}
+  data: TResponseTodoData[];
+};
+
+export type TDeleteTodoResponse = {
+  message: string;
+};

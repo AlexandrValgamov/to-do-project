@@ -1,12 +1,14 @@
 .defaultLayoutContainer {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  justify-content: center;
 }
 
 .defaultLayoutHeader {
   display: flex;
   justify-content: flex-end;
-  height: 4rem;
+  height: 3.5rem;
   width: 100%;
   background-color: var(--theme-main-primaryColor);
 }
