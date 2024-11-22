@@ -32,3 +32,14 @@ export const createTodo = async (req, res, next) => {
     next(error);
   }
 };
+
+export const deleteTodo = async (req, res, next) => {
+  const { todoId } = req.params;
+
+  try {
+    const data = await todo.deleteOne({ _id: todoId });
+    res.send({ message: 'TODO удалена', data: [data] });
+  } catch (error) {
+    next(error);
+  }
+};
